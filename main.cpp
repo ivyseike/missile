@@ -115,176 +115,172 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    string testcase;
+    if(argc >= 2)
+        testcase = string(argv[2]);
+    int symbol = testcase.find("\\");
+    testcase = testcase.substr(0, symbol+1);
+
+
     Player initial_players[2];
     initial_players[0] = players[0]; initial_players[1] = players[1];
 
-    string testcaseFile = "testcase_0.txt";
-    while(true){
-        testcaseFile[9]++;
-        ifstream infile(testcaseFile);
-        if(!infile){
-            cout << "Test case file does not exits." << endl;
-            break;
-        }
-        int turn_count = 0;
-        int player = 1 ;
-        int counter = 0;
-        while(!infile.eof() && players[0].tanks && players[1].tanks){
-             string command;
-             getline(infile, command);
-             cout << command;
-             if(command.empty())
-                 continue;
-             else{
-                 turn_count++;
-                 player = (turn_count+1) % 2;
-                 counter = (player == 1)? 0 : 1;
-                 cout << players[player].name << ", now is your turn." << endl;
-                 if(command == "stats" || command == "help" || command == "reset"){
-                     if(command == "stats"){
-                         cout << "======================================Stats Board=======================" << endl;
-                         cout << "This is turn number " << turn_count << endl;
-                         cout << players[0].name << " has targeted the following positions: " << endl;
-                         for(int i=0;i<players[0].targeted.size();i++){
-                             cout << players[0].targeted[i] << " ";
-                         }
-                         cout << endl;
-                         cout << players[0].name << " has destroyed " << players[0].destroyed.size() << " tanks in the following positions: " << endl;
-                         for(int i=0;i<players[0].destroyed.size();i++){
-                             cout << players[0].destroyed[i] << " ";
-                         }
-                         cout << endl;
-                         cout << players[0].name << " has " << players[0].sm << " special missiles" << endl;
-
-                         cout << "------------------------------------------------------------------------" << endl;
-
-                         cout << players[1].name << " has targeted the following positions: " << endl;
-                         for(int i=0;i<players[1].targeted.size();i++){
-                             cout << players[1].targeted[i] << " ";
-                         }
-                         cout << endl;
-                         cout << players[1].name << " has destroyed " << players[1].destroyed.size() << " tanks in the following positions: " << endl;
-                         for(int i=0;i<players[1].destroyed.size();i++){
-                             cout << players[1].destroyed[i] << " ";
-                         }
-                         cout << endl;
-                         cout << players[1].name << " has " << players[1].sm << " special missiles" << endl;
-                         cout << "========================================================================" << endl;
-
-                         turn_count--;
-                         continue;
+    ifstream infile(testcase + "commands.txt");
+    if(!infile){
+        cout << "Test case file does not exits." << endl;
+        return 0;
+    }
+    int turn_count = 0;
+    int player = 1 ;
+    int counter = 0;
+    while(!infile.eof() && players[0].tanks && players[1].tanks){
+         string command;
+         getline(infile, command);
+         if(command.empty())
+             continue;
+         else{
+             turn_count++;
+             player = (turn_count+1) % 2;
+             counter = (player == 1)? 0 : 1;
+             cout << players[player].name << ", now is your turn." << endl;
+             cout << command << endl;
+             if(command == "stats" || command == "help" || command == "reset"){
+                 if(command == "stats"){
+                     cout << "======================================Stats Board=======================" << endl;
+                     cout << "This is turn number " << turn_count << endl;
+                     cout << players[0].name << " has targeted the following positions: " << endl;
+                     for(int i=0;i<players[0].targeted.size();i++){
+                         cout << players[0].targeted[i] << " ";
                      }
-                     else if(command == "help"){
-                         cout << "Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. "
-                                 "Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles."
-                                 "A regular missile can target one coordinate. A special missle can target one coordinate and one that is adjacent to it."
-                                 "Whoever destories the first tank can get an additional special missle."
-                                 "The player who first destroies all 8 tanks of the opponent wins." << endl;
-                         turn_count--;
+                     cout << endl;
+                     cout << players[0].name << " has destroyed " << players[0].destroyed.size() << " tanks in the following positions: " << endl;
+                     for(int i=0;i<players[0].destroyed.size();i++){
+                         cout << players[0].destroyed[i] << " ";
+                     }
+                     cout << endl;
+                     cout << players[0].name << " has " << players[0].sm << " special missiles" << endl;
+                      cout << "------------------------------------------------------------------------" << endl;
+                      cout << players[1].name << " has targeted the following positions: " << endl;
+                     for(int i=0;i<players[1].targeted.size();i++){
+                         cout << players[1].targeted[i] << " ";
+                     }
+                     cout << endl;
+                     cout << players[1].name << " has destroyed " << players[1].destroyed.size() << " tanks in the following positions: " << endl;
+                     for(int i=0;i<players[1].destroyed.size();i++){
+                         cout << players[1].destroyed[i] << " ";
+                     }
+                     cout << endl;
+                     cout << players[1].name << " has " << players[1].sm << " special missiles" << endl;
+                     cout << "========================================================================" << endl;
+                      turn_count--;
+                     continue;
+                 }
+                 else if(command == "help"){
+                     cout << "Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. "
+                             "Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles."
+                             "A regular missile can target one coordinate. A special missle can target one coordinate and one that is adjacent to it."
+                             "Whoever destorys the first tank can get an additional special missle."
+                             "The player who first destroys all 8 tanks of the opponent wins." << endl;
+                     turn_count--;
+                     continue;
+                 }
+                 else{
+                     cout << "Are you sure to reset the game to the initial state? Input Y to confirm." << endl;
+                     string choice;
+                     getline(infile, choice);
+                     if(choice == "Y"){
+                         players[0] = initial_players[0];
+                         players[1] = initial_players[1];
+                         turn_count = 0;
                          continue;
                      }
                      else{
-                         cout << "Are you sure to reset the game to the initial state? Input Y to confirm." << endl;
-                         string choice;
-                         getline(cin, choice);
-                         if(choice == "Y"){
-                             players[0] = initial_players[0];
-                             players[1] = initial_players[1];
-                             turn_count = 0;
-                             continue;
+                         cout << "Error: you have entered something invalid, the reset is not going to happen" << endl;
+                         turn_count--;
+                         continue;
+                     }
+                 }
+             }
+             else{
+                 vector<string> split_list;
+                 split_command(command, split_list);
+                 if(split_list.size() && split_list[0] == "RM" || split_list[0] == "SM"){
+                     if(split_list[0] == "RM"){
+                         if(split_list.size() == 2 && verifyCoordinate(split_list[1])){
+                             players[player].targeted.push_back(split_list[1]);
+                             if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){
+                                 if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
+                                     players[player].sm++;
+                                 }
+                                 players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;
+                                 players[player].destroyed.push_back(split_list[1]);
+                                 players[counter].tanks--;
+                                 cout << "You have destroyed a tank!" << endl;
+                              }
+                             else{
+                                 cout << "Nothing happened!" << endl;
+                             }
                          }
                          else{
-                             cout << "Error: you have entered something invalid, the reset is not going to happen" << endl;
+                             cout << "The input is invalid, please try again" << endl;
+                             turn_count--;
+                             continue;
+                         }
+                     }
+                     else if(split_list[0] == "SM"){
+                         if(split_list.size() == 3 && verifyCoordinate(split_list[1]) &&
+                            (split_list[2] == "T" || split_list[2] == "L" || split_list[2] == "B"
+                             || split_list[2] == "R")){
+                             if(players[player].sm){
+                                 players[player].targeted.push_back(split_list[1]);
+                                 int destroyed_tank = 0;
+                                 if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){
+                                     if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
+                                         players[player].sm++;
+                                     }
+                                     players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;
+                                     players[counter].tanks--;
+                                     players[player].destroyed.push_back(split_list[1]);
+                                     destroyed_tank++;
+                                  }
+                                 string newC = generateNewCoordinate(split_list[1], split_list[2]);
+                                 if(verifyCoordinate(newC)){
+                                     players[player].targeted.push_back(newC);
+                                     if(players[counter].board[newC[1]-'1'][newC[0]-'A'] == 1){
+                                         if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
+                                             players[player].sm++;
+                                         }
+                                         players[counter].board[newC[1]-'1'][newC[0]-'A'] = 0;
+                                         players[player].destroyed.push_back(newC);
+                                         players[counter].tanks--;
+                                         destroyed_tank++;
+                                     }
+                                 }
+                                  cout << "You have destroyed " << destroyed_tank << " tanks!" << endl;
+                                 players[player].sm--;
+                             }
+                             else{
+                                 cout << "You don't have any special missile!" << endl;
+                                 turn_count--;
+                                 continue;
+                             }
+                         }
+                         else{
+                             cout << "The input is invalid, please try again" << endl;
                              turn_count--;
                              continue;
                          }
                      }
                  }
                  else{
-                     vector<string> split_list;
-                     split_command(command, split_list);
-                     if(split_list.size() && split_list[0] == "RM" || split_list[0] == "SM"){
-                         if(split_list[0] == "RM"){
-                             if(split_list.size() == 2 && verifyCoordinate(split_list[1])){
-                                 players[player].targeted.push_back(split_list[1]);
-                                 if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){
-                                     if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
-                                         players[player].sm++;
-                                     }
-                                     players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;
-                                     players[player].destroyed.push_back(split_list[1]);
-                                     players[counter].tanks--;
-                                     cout << "You have destroyed a tank!" << endl;
-
-                                 }
-                                 else{
-                                     cout << "Nothing happened!" << endl;
-                                 }
-                             }
-                             else{
-                                 cout << "The input is invalid, please try again" << endl;
-                                 turn_count--;
-                                 continue;
-                             }
-                         }
-                         else if(split_list[0] == "SM"){
-                             if(split_list.size() == 3 && verifyCoordinate(split_list[1]) &&
-                                (split_list[2] == "T" || split_list[2] == "L" || split_list[2] == "B"
-                                 || split_list[2] == "R")){
-                                 if(players[player].sm){
-                                     players[player].targeted.push_back(split_list[1]);
-                                     int destroyed_tank = 0;
-                                     if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){
-                                         if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
-                                             players[player].sm++;
-                                         }
-                                         players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;
-                                         players[counter].tanks--;
-                                         players[player].destroyed.push_back(split_list[1]);
-                                         destroyed_tank++;
-
-                                     }
-                                     string newC = generateNewCoordinate(split_list[1], split_list[2]);
-                                     if(verifyCoordinate(newC)){
-                                         players[player].targeted.push_back(newC);
-                                         if(players[counter].board[newC[1]-'1'][newC[0]-'A'] == 1){
-                                             if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
-                                                 players[player].sm++;
-                                             }
-                                             players[counter].board[newC[1]-'1'][newC[0]-'A'] = 0;
-                                             players[player].destroyed.push_back(newC);
-                                             players[counter].tanks--;
-                                             destroyed_tank++;
-                                         }
-                                     }
-
-                                     cout << "You have destroyed " << destroyed_tank << " tanks!" << endl;
-                                     players[player].sm--;
-                                 }
-                                 else{
-                                     cout << "You don't have any special missile!" << endl;
-                                     turn_count--;
-                                     continue;
-                                 }
-                             }
-                             else{
-                                 cout << "The input is invalid, please try again" << endl;
-                                 turn_count--;
-                                 continue;
-                             }
-                         }
-                     }
-                     else{
-                         cout << "The command is invalid, please try again" << endl;
-                         turn_count--;
-                         continue;
-                     }
+                     cout << "The command is invalid, please try again" << endl;
+                     turn_count--;
+                     continue;
                  }
              }
-        }
-        players[0] = initial_players[0];
-        players[1] = initial_players[1];
+         }
     }
+
     return 0;
 
 

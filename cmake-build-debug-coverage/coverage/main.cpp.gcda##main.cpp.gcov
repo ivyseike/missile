@@ -1,0 +1,669 @@
+        -:    0:Source:C:/Users/ivyseike/CLionProjects/missile/main.cpp
+        -:    0:Graph:C:\Users\ivyseike\CLionProjects\missile\cmake-build-debug-coverage\CMakeFiles\missle.dir\main.cpp.gcno
+        -:    0:Data:C:\Users\ivyseike\CLionProjects\missile\cmake-build-debug-coverage\CMakeFiles\missle.dir\main.cpp.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <iostream>
+        -:    2:#include <vector>
+        -:    3:#include <fstream>
+        -:    4:
+        -:    5:using namespace std;
+        -:    6:
+        -:    7:const int initial_tanks = 8;
+        -:    8:const int initial_sm = 1;
+        -:    9:const int boardRow = 4;
+        -:   10:const int boardCol = 8;
+        -:   11:
+        8:   12:bool verifyCoordinate(string coor){
+       16:   13:    if(coor.size() == 2 && isalpha(coor[0]) && isdigit(coor[1]) &&
+        8:   13-block  0
+        8:   13-block  1
+        8:   13-block  2
+       16:   14:       coor[0] >= 'A' && coor[0] <= 'H' && coor[1] >= '1' && coor[1] <= '4')
+        8:   14-block  0
+        8:   14-block  1
+        7:   14-block  2
+        7:   14-block  3
+        7:   14-block  4
+        1:   14-block  5
+        8:   14-block  6
+        7:   15:        return true;
+        7:   15-block  0
+        1:   16:    return false;
+        1:   16-block  0
+        -:   17:}
+        -:   18:
+    #####:   19:void split_command(string command, vector<string> &split_list){
+    #####:   20:    int found = command.find_first_of(" ");
+    %%%%%:   20-block  0
+    #####:   21:    int start = 0;
+    #####:   22:    while(found != string::npos){
+    %%%%%:   22-block  0
+    #####:   23:        split_list.push_back(command.substr(start, found-start));
+    %%%%%:   23-block  0
+    %%%%%:   23-block  1
+    $$$$$:   23-block  2
+    $$$$$:   23-block  3
+    #####:   24:        start = found+1;
+    #####:   25:        found = command.find_first_of(" ", start);
+        -:   26:    }
+    #####:   27:    split_list.push_back(command.substr(start));
+    %%%%%:   27-block  0
+    %%%%%:   27-block  1
+    $$$$$:   27-block  2
+    #####:   28:}
+        -:   29:
+    #####:   30:string generateNewCoordinate(string old, string direction){
+    #####:   31:    string newC = old;
+    %%%%%:   31-block  0
+    #####:   32:    if(direction == "T")
+    #####:   33:        newC[1]++;
+    %%%%%:   33-block  0
+    %%%%%:   33-block  1
+    #####:   34:    else if(direction == "B")
+    %%%%%:   34-block  0
+    #####:   35:        newC[1]--;
+    %%%%%:   35-block  0
+    %%%%%:   35-block  1
+    #####:   36:    else if(direction == "L")
+    %%%%%:   36-block  0
+    #####:   37:        newC[0]--;
+    %%%%%:   37-block  0
+    %%%%%:   37-block  1
+    #####:   38:    else if(direction == "R")
+    %%%%%:   38-block  0
+    #####:   39:        newC[0]++;
+    %%%%%:   39-block  0
+    %%%%%:   39-block  1
+        -:   40:
+    #####:   41:    return newC;
+    %%%%%:   41-block  0
+    %%%%%:   41-block  1
+        -:   42:}
+        -:   43:
+        -:   44:
+        -:   45:struct Player{
+        2:   46:    Player(string name_ = "", int tanks_= initial_tanks, int sm_ = initial_sm): name(name_),
+        2:   47:            tanks(tanks_), sm(sm_) {
+        2:   47-block  0
+    $$$$$:   47-block  1
+    $$$$$:   47-block  2
+    $$$$$:   47-block  3
+    $$$$$:   47-block  4
+       10:   48:        for(int i=0;i<boardRow;i++){
+       10:   48-block  0
+        8:   49:            board.push_back(vector<int>());
+        8:   49-block  0
+        8:   49-block  1
+    $$$$$:   49-block  2
+    $$$$$:   49-block  3
+        -:   50:        }
+       10:   51:        for(int i=0;i<boardRow;i++){
+        2:   51-block  0
+       10:   51-block  1
+        8:   51-block  2
+       72:   52:            for(int j=0; j<boardCol;j++){
+        8:   52-block  0
+       72:   52-block  1
+       64:   53:                board[i].push_back(0);
+       64:   53-block  0
+       64:   53-block  1
+    $$$$$:   53-block  2
+        -:   54:            }
+        -:   55:        }
+        2:   56:    }
+        2:   56-block  0
+        -:   57:    string name;
+        -:   58:    int tanks;
+        -:   59:    int sm;
+        -:   60:    vector<vector<int>> board;
+        -:   61:    vector<string> destroyed;
+        -:   62:    vector<string> targeted;
+        -:   63:};
+        -:   64:
+        -:   65:
+        1:   66:int main(int argc, char *argv[]) {
+        1:   67:    if(argc < 3){
+        1:   67-block  0
+    #####:   68:        cout << "Usage: missile <player_1_coordinate_file> <player_2_coordinate_file>" << endl;
+    %%%%%:   68-block  0
+    %%%%%:   68-block  1
+    #####:   69:        return 0;
+    %%%%%:   69-block  0
+        -:   70:    }
+        -:   71:
+        1:   72:    int max_arg=4;
+        6:   73:    Player players[2];
+        1:   73-block  0
+        3:   73-block  1
+        2:   73-block  2
+        2:   73-block  3
+        2:   73-block  4
+        1:   73-block  5
+        3:   73-block  6
+        2:   73-block  7
+    $$$$$:   73-block  8
+    $$$$$:   73-block  9
+    $$$$$:   73-block 10
+    $$$$$:   73-block 11
+    $$$$$:   73-block 12
+    $$$$$:   73-block 13
+    $$$$$:   73-block 14
+    $$$$$:   73-block 15
+    $$$$$:   73-block 16
+        -:   74:
+        -:   75:    //for the board, 0 means an empty slot, 1 means occupied by a tank
+        -:   76:
+       1*:   77:    for(int i=1;i<argc && i<=max_arg;i++){
+        1:   77-block  0
+        1:   77-block  1
+        1:   77-block  2
+    %%%%%:   77-block  3
+       1*:   78:        if(i == 1 || i == 2){
+        1:   78-block  0
+    %%%%%:   78-block  1
+        1:   79:            int player = i-1;
+        1:   80:            ifstream infile(argv[i]);
+        1:   80-block  0
+    $$$$$:   80-block  1
+        1:   81:            if(!infile){
+        1:   81-block  0
+        1:   81-block  1
+    #####:   82:                cout << "Error: invalid file name for player_coordinate_file" << endl;
+    %%%%%:   82-block  0
+    %%%%%:   82-block  1
+    #####:   83:                return 0;
+    %%%%%:   83-block  0
+        -:   84:            }
+        -:   85:            else{
+        1:   86:                vector<string> coordinate_list;
+        1:   86-block  0
+    $$$$$:   86-block  1
+        9:   87:                while(!infile.eof()){
+        9:   87-block  0
+        9:   87-block  1
+       16:   88:                    string coor;
+        8:   88-block  0
+        8:   88-block  1
+    $$$$$:   88-block  2
+        8:   89:                    infile >> coor;
+        8:   90:                    if(!coor.empty())
+        8:   90-block  0
+        8:   91:                        coordinate_list.push_back(coor);
+        8:   91-block  0
+        -:   92:                }
+        1:   93:                if(coordinate_list.size() != initial_tanks){
+        1:   93-block  0
+    #####:   94:                    cout << "Error: invalid content for player_coordinate_file" << endl;
+    %%%%%:   94-block  0
+    %%%%%:   94-block  1
+    #####:   95:                    return 0;
+    %%%%%:   95-block  0
+        -:   96:                }
+        -:   97:                else{
+        8:   98:                    for(int j=0;j<initial_tanks;j++){
+        1:   98-block  0
+        8:   98-block  1
+        7:   98-block  2
+        8:   99:                        if(verifyCoordinate(coordinate_list[j])){
+        8:   99-block  0
+        8:   99-block  1
+        8:   99-block  2
+    $$$$$:   99-block  3
+    $$$$$:   99-block  4
+        7:  100:                            players[player].board[coordinate_list[j][1]-'1'][coordinate_list[j][0]-'A'] = 1;
+        7:  100-block  0
+        7:  100-block  1
+        7:  100-block  2
+        -:  101:                        }
+        -:  102:                        else{
+        1:  103:                            cout << "Error: invalid content for player_coordinate_file" << endl;
+        1:  103-block  0
+        1:  103-block  1
+        1:  104:                            return 0;
+        1:  104-block  0
+        -:  105:                        }
+        -:  106:                    }
+        -:  107:                }
+    #####:  108:            }
+    %%%%%:  108-block  0
+        -:  109:        }
+    #####:  110:        else if(i == 3){
+    %%%%%:  110-block  0
+    #####:  111:            players[0].name = string(argv[i]);
+    %%%%%:  111-block  0
+    %%%%%:  111-block  1
+    $$$$$:  111-block  2
+    $$$$$:  111-block  3
+        -:  112:        }
+    #####:  113:        else if(i == 4){
+    %%%%%:  113-block  0
+    #####:  114:            players[1].name = string(argv[i]);
+    %%%%%:  114-block  0
+    %%%%%:  114-block  1
+    $$$$$:  114-block  2
+    $$$$$:  114-block  3
+        -:  115:        }
+        -:  116:    }
+        -:  117:
+    #####:  118:    string testcase;
+    %%%%%:  118-block  0
+    %%%%%:  118-block  1
+    $$$$$:  118-block  2
+    #####:  119:    if(argc >= 2)
+    #####:  120:        testcase = string(argv[2]);
+    %%%%%:  120-block  0
+    %%%%%:  120-block  1
+    $$$$$:  120-block  2
+    $$$$$:  120-block  3
+    #####:  121:    int symbol = testcase.find("\\");
+    %%%%%:  121-block  0
+    #####:  122:    testcase = testcase.substr(0, symbol+1);
+    %%%%%:  122-block  0
+        -:  123:
+        -:  124:
+    #####:  125:    Player initial_players[2];
+    %%%%%:  125-block  0
+    %%%%%:  125-block  1
+    %%%%%:  125-block  2
+    %%%%%:  125-block  3
+    %%%%%:  125-block  4
+    %%%%%:  125-block  5
+    $$$$$:  125-block  6
+    $$$$$:  125-block  7
+    $$$$$:  125-block  8
+    $$$$$:  125-block  9
+    $$$$$:  125-block 10
+    $$$$$:  125-block 11
+    $$$$$:  125-block 12
+    $$$$$:  125-block 13
+    $$$$$:  125-block 14
+    #####:  126:    initial_players[0] = players[0]; initial_players[1] = players[1];
+    %%%%%:  126-block  0
+    %%%%%:  126-block  1
+        -:  127:
+    #####:  128:    ifstream infile(testcase + "commands.txt");
+    %%%%%:  128-block  0
+    %%%%%:  128-block  1
+    %%%%%:  128-block  2
+    $$$$$:  128-block  3
+    $$$$$:  128-block  4
+    #####:  129:    if(!infile){
+    %%%%%:  129-block  0
+    #####:  130:        cout << "Test case file does not exits." << endl;
+    %%%%%:  130-block  0
+    %%%%%:  130-block  1
+    #####:  131:        return 0;
+    %%%%%:  131-block  0
+        -:  132:    }
+    #####:  133:    int turn_count = 0;
+    #####:  134:    int player = 1 ;
+    #####:  135:    int counter = 0;
+    %%%%%:  135-block  0
+    #####:  136:    while(!infile.eof() && players[0].tanks && players[1].tanks){
+    %%%%%:  136-block  0
+    %%%%%:  136-block  1
+    %%%%%:  136-block  2
+    %%%%%:  136-block  3
+    %%%%%:  136-block  4
+    %%%%%:  136-block  5
+    %%%%%:  136-block  6
+    %%%%%:  136-block  7
+    #####:  137:         string command;
+    %%%%%:  137-block  0
+    $$$$$:  137-block  1
+    #####:  138:         getline(infile, command);
+    #####:  139:         if(command.empty())
+    %%%%%:  139-block  0
+    #####:  140:             continue;
+    %%%%%:  140-block  0
+        -:  141:         else{
+    #####:  142:             turn_count++;
+    #####:  143:             player = (turn_count+1) % 2;
+    #####:  144:             counter = (player == 1)? 0 : 1;
+    #####:  145:             cout << players[player].name << ", now is your turn." << endl;
+    %%%%%:  145-block  0
+    %%%%%:  145-block  1
+    %%%%%:  145-block  2
+    #####:  146:             cout << command << endl;
+    %%%%%:  146-block  0
+    %%%%%:  146-block  1
+    #####:  147:             if(command == "stats" || command == "help" || command == "reset"){
+    %%%%%:  147-block  0
+    %%%%%:  147-block  1
+    %%%%%:  147-block  2
+    %%%%%:  147-block  3
+    %%%%%:  147-block  4
+    %%%%%:  147-block  5
+    #####:  148:                 if(command == "stats"){
+    %%%%%:  148-block  0
+    #####:  149:                     cout << "======================================Stats Board=======================" << endl;
+    %%%%%:  149-block  0
+    %%%%%:  149-block  1
+    #####:  150:                     cout << "This is turn number " << turn_count << endl;
+    %%%%%:  150-block  0
+    %%%%%:  150-block  1
+    %%%%%:  150-block  2
+    #####:  151:                     cout << players[0].name << " has targeted the following positions: " << endl;
+    %%%%%:  151-block  0
+    %%%%%:  151-block  1
+    %%%%%:  151-block  2
+    #####:  152:                     for(int i=0;i<players[0].targeted.size();i++){
+    %%%%%:  152-block  0
+    %%%%%:  152-block  1
+    %%%%%:  152-block  2
+    #####:  153:                         cout << players[0].targeted[i] << " ";
+    %%%%%:  153-block  0
+    %%%%%:  153-block  1
+        -:  154:                     }
+    #####:  155:                     cout << endl;
+    %%%%%:  155-block  0
+    #####:  156:                     cout << players[0].name << " has destroyed " << players[0].destroyed.size() << " tanks in the following positions: " << endl;
+    %%%%%:  156-block  0
+    %%%%%:  156-block  1
+    %%%%%:  156-block  2
+    %%%%%:  156-block  3
+    %%%%%:  156-block  4
+    #####:  157:                     for(int i=0;i<players[0].destroyed.size();i++){
+    %%%%%:  157-block  0
+    %%%%%:  157-block  1
+    %%%%%:  157-block  2
+    #####:  158:                         cout << players[0].destroyed[i] << " ";
+    %%%%%:  158-block  0
+    %%%%%:  158-block  1
+        -:  159:                     }
+    #####:  160:                     cout << endl;
+    %%%%%:  160-block  0
+    #####:  161:                     cout << players[0].name << " has " << players[0].sm << " special missiles" << endl;
+    %%%%%:  161-block  0
+    %%%%%:  161-block  1
+    %%%%%:  161-block  2
+    %%%%%:  161-block  3
+    %%%%%:  161-block  4
+    #####:  162:                      cout << "------------------------------------------------------------------------" << endl;
+    %%%%%:  162-block  0
+    %%%%%:  162-block  1
+    #####:  163:                      cout << players[1].name << " has targeted the following positions: " << endl;
+    %%%%%:  163-block  0
+    %%%%%:  163-block  1
+    %%%%%:  163-block  2
+    #####:  164:                     for(int i=0;i<players[1].targeted.size();i++){
+    %%%%%:  164-block  0
+    %%%%%:  164-block  1
+    %%%%%:  164-block  2
+    #####:  165:                         cout << players[1].targeted[i] << " ";
+    %%%%%:  165-block  0
+    %%%%%:  165-block  1
+        -:  166:                     }
+    #####:  167:                     cout << endl;
+    %%%%%:  167-block  0
+    #####:  168:                     cout << players[1].name << " has destroyed " << players[1].destroyed.size() << " tanks in the following positions: " << endl;
+    %%%%%:  168-block  0
+    %%%%%:  168-block  1
+    %%%%%:  168-block  2
+    %%%%%:  168-block  3
+    %%%%%:  168-block  4
+    #####:  169:                     for(int i=0;i<players[1].destroyed.size();i++){
+    %%%%%:  169-block  0
+    %%%%%:  169-block  1
+    %%%%%:  169-block  2
+    #####:  170:                         cout << players[1].destroyed[i] << " ";
+    %%%%%:  170-block  0
+    %%%%%:  170-block  1
+        -:  171:                     }
+    #####:  172:                     cout << endl;
+    %%%%%:  172-block  0
+    #####:  173:                     cout << players[1].name << " has " << players[1].sm << " special missiles" << endl;
+    %%%%%:  173-block  0
+    %%%%%:  173-block  1
+    %%%%%:  173-block  2
+    %%%%%:  173-block  3
+    %%%%%:  173-block  4
+    #####:  174:                     cout << "========================================================================" << endl;
+    %%%%%:  174-block  0
+    %%%%%:  174-block  1
+    #####:  175:                      turn_count--;
+    #####:  176:                     continue;
+    %%%%%:  176-block  0
+        -:  177:                 }
+    #####:  178:                 else if(command == "help"){
+    %%%%%:  178-block  0
+        -:  179:                     cout << "Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. "
+        -:  180:                             "Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles."
+        -:  181:                             "A regular missile can target one coordinate. A special missle can target one coordinate and one that is adjacent to it."
+        -:  182:                             "Whoever destorys the first tank can get an additional special missle."
+    #####:  183:                             "The player who first destroys all 8 tanks of the opponent wins." << endl;
+    %%%%%:  183-block  0
+    %%%%%:  183-block  1
+    #####:  184:                     turn_count--;
+    #####:  185:                     continue;
+    %%%%%:  185-block  0
+        -:  186:                 }
+        -:  187:                 else{
+    #####:  188:                     cout << "Are you sure to reset the game to the initial state? Input Y to confirm." << endl;
+    %%%%%:  188-block  0
+    %%%%%:  188-block  1
+    #####:  189:                     string choice;
+    %%%%%:  189-block  0
+    %%%%%:  189-block  1
+    $$$$$:  189-block  2
+    #####:  190:                     getline(infile, choice);
+    #####:  191:                     if(choice == "Y"){
+    %%%%%:  191-block  0
+    #####:  192:                         players[0] = initial_players[0];
+    %%%%%:  192-block  0
+    #####:  193:                         players[1] = initial_players[1];
+    %%%%%:  193-block  0
+    #####:  194:                         turn_count = 0;
+    #####:  195:                         continue;
+    %%%%%:  195-block  0
+        -:  196:                     }
+        -:  197:                     else{
+    #####:  198:                         cout << "Error: you have entered something invalid, the reset is not going to happen" << endl;
+    %%%%%:  198-block  0
+    %%%%%:  198-block  1
+    #####:  199:                         turn_count--;
+    #####:  200:                         continue;
+    %%%%%:  200-block  0
+        -:  201:                     }
+        -:  202:                 }
+        -:  203:             }
+        -:  204:             else{
+    #####:  205:                 vector<string> split_list;
+    %%%%%:  205-block  0
+    $$$$$:  205-block  1
+    #####:  206:                 split_command(command, split_list);
+    %%%%%:  206-block  0
+    %%%%%:  206-block  1
+    $$$$$:  206-block  2
+    $$$$$:  206-block  3
+    #####:  207:                 if(split_list.size() && split_list[0] == "RM" || split_list[0] == "SM"){
+    %%%%%:  207-block  0
+    %%%%%:  207-block  1
+    %%%%%:  207-block  2
+    %%%%%:  207-block  3
+    %%%%%:  207-block  4
+    #####:  208:                     if(split_list[0] == "RM"){
+    %%%%%:  208-block  0
+    #####:  209:                         if(split_list.size() == 2 && verifyCoordinate(split_list[1])){
+    %%%%%:  209-block  0
+    %%%%%:  209-block  1
+    %%%%%:  209-block  2
+    %%%%%:  209-block  3
+    %%%%%:  209-block  4
+    %%%%%:  209-block  5
+    %%%%%:  209-block  6
+    %%%%%:  209-block  7
+    %%%%%:  209-block  8
+    $$$$$:  209-block  9
+    $$$$$:  209-block 10
+    $$$$$:  209-block 11
+    #####:  210:                             players[player].targeted.push_back(split_list[1]);
+    %%%%%:  210-block  0
+    #####:  211:                             if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){
+    %%%%%:  211-block  0
+    %%%%%:  211-block  1
+    %%%%%:  211-block  2
+    #####:  212:                                 if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
+    %%%%%:  212-block  0
+    %%%%%:  212-block  1
+    %%%%%:  212-block  2
+    %%%%%:  212-block  3
+    %%%%%:  212-block  4
+    #####:  213:                                     players[player].sm++;
+    %%%%%:  213-block  0
+        -:  214:                                 }
+    #####:  215:                                 players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;
+    %%%%%:  215-block  0
+    %%%%%:  215-block  1
+    %%%%%:  215-block  2
+    #####:  216:                                 players[player].destroyed.push_back(split_list[1]);
+    #####:  217:                                 players[counter].tanks--;
+    #####:  218:                                 cout << "You have destroyed a tank!" << endl;
+    %%%%%:  218-block  0
+    %%%%%:  218-block  1
+        -:  219:                              }
+        -:  220:                             else{
+    #####:  221:                                 cout << "Nothing happened!" << endl;
+    %%%%%:  221-block  0
+    %%%%%:  221-block  1
+        -:  222:                             }
+        -:  223:                         }
+        -:  224:                         else{
+    #####:  225:                             cout << "The input is invalid, please try again" << endl;
+    %%%%%:  225-block  0
+    %%%%%:  225-block  1
+    #####:  226:                             turn_count--;
+    #####:  227:                             continue;
+    %%%%%:  227-block  0
+        -:  228:                         }
+        -:  229:                     }
+    #####:  230:                     else if(split_list[0] == "SM"){
+    %%%%%:  230-block  0
+    #####:  231:                         if(split_list.size() == 3 && verifyCoordinate(split_list[1]) &&
+    %%%%%:  231-block  0
+    %%%%%:  231-block  1
+    %%%%%:  231-block  2
+    %%%%%:  231-block  3
+    %%%%%:  231-block  4
+    %%%%%:  231-block  5
+    %%%%%:  231-block  6
+    %%%%%:  231-block  7
+    %%%%%:  231-block  8
+    $$$$$:  231-block  9
+    $$$$$:  231-block 10
+    $$$$$:  231-block 11
+    #####:  232:                            (split_list[2] == "T" || split_list[2] == "L" || split_list[2] == "B"
+    %%%%%:  232-block  0
+    %%%%%:  232-block  1
+    %%%%%:  232-block  2
+    #####:  233:                             || split_list[2] == "R")){
+    %%%%%:  233-block  0
+    #####:  234:                             if(players[player].sm){
+    %%%%%:  234-block  0
+    #####:  235:                                 players[player].targeted.push_back(split_list[1]);
+    %%%%%:  235-block  0
+    #####:  236:                                 int destroyed_tank = 0;
+    #####:  237:                                 if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){
+    %%%%%:  237-block  0
+    %%%%%:  237-block  1
+    %%%%%:  237-block  2
+    #####:  238:                                     if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
+    %%%%%:  238-block  0
+    %%%%%:  238-block  1
+    %%%%%:  238-block  2
+    %%%%%:  238-block  3
+    %%%%%:  238-block  4
+    #####:  239:                                         players[player].sm++;
+    %%%%%:  239-block  0
+        -:  240:                                     }
+    #####:  241:                                     players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;
+    %%%%%:  241-block  0
+    %%%%%:  241-block  1
+    %%%%%:  241-block  2
+    #####:  242:                                     players[counter].tanks--;
+    #####:  243:                                     players[player].destroyed.push_back(split_list[1]);
+    #####:  244:                                     destroyed_tank++;
+    %%%%%:  244-block  0
+        -:  245:                                  }
+    #####:  246:                                 string newC = generateNewCoordinate(split_list[1], split_list[2]);
+    %%%%%:  246-block  0
+    %%%%%:  246-block  1
+    %%%%%:  246-block  2
+    $$$$$:  246-block  3
+    $$$$$:  246-block  4
+    $$$$$:  246-block  5
+    #####:  247:                                 if(verifyCoordinate(newC)){
+    %%%%%:  247-block  0
+    %%%%%:  247-block  1
+    $$$$$:  247-block  2
+    $$$$$:  247-block  3
+    #####:  248:                                     players[player].targeted.push_back(newC);
+    %%%%%:  248-block  0
+    #####:  249:                                     if(players[counter].board[newC[1]-'1'][newC[0]-'A'] == 1){
+    %%%%%:  249-block  0
+    %%%%%:  249-block  1
+    %%%%%:  249-block  2
+    #####:  250:                                         if(players[0].destroyed.size() == 0 && players[1].destroyed.size() == 0){
+    %%%%%:  250-block  0
+    %%%%%:  250-block  1
+    %%%%%:  250-block  2
+    %%%%%:  250-block  3
+    %%%%%:  250-block  4
+    #####:  251:                                             players[player].sm++;
+    %%%%%:  251-block  0
+        -:  252:                                         }
+    #####:  253:                                         players[counter].board[newC[1]-'1'][newC[0]-'A'] = 0;
+    %%%%%:  253-block  0
+    %%%%%:  253-block  1
+    %%%%%:  253-block  2
+    #####:  254:                                         players[player].destroyed.push_back(newC);
+    #####:  255:                                         players[counter].tanks--;
+    #####:  256:                                         destroyed_tank++;
+    %%%%%:  256-block  0
+        -:  257:                                     }
+        -:  258:                                 }
+    #####:  259:                                  cout << "You have destroyed " << destroyed_tank << " tanks!" << endl;
+    %%%%%:  259-block  0
+    %%%%%:  259-block  1
+    %%%%%:  259-block  2
+    %%%%%:  259-block  3
+    #####:  260:                                 players[player].sm--;
+    %%%%%:  260-block  0
+        -:  261:                             }
+        -:  262:                             else{
+    #####:  263:                                 cout << "You don't have any special missile!" << endl;
+    %%%%%:  263-block  0
+    %%%%%:  263-block  1
+    #####:  264:                                 turn_count--;
+    #####:  265:                                 continue;
+    %%%%%:  265-block  0
+        -:  266:                             }
+        -:  267:                         }
+        -:  268:                         else{
+    #####:  269:                             cout << "The input is invalid, please try again" << endl;
+    %%%%%:  269-block  0
+    %%%%%:  269-block  1
+    #####:  270:                             turn_count--;
+    #####:  271:                             continue;
+    %%%%%:  271-block  0
+        -:  272:                         }
+        -:  273:                     }
+        -:  274:                 }
+        -:  275:                 else{
+    #####:  276:                     cout << "The command is invalid, please try again" << endl;
+    %%%%%:  276-block  0
+    %%%%%:  276-block  1
+    #####:  277:                     turn_count--;
+    #####:  278:                     continue;
+    %%%%%:  278-block  0
+        -:  279:                 }
+        -:  280:             }
+        -:  281:         }
+        -:  282:    }
+        -:  283:
+    #####:  284:    return 0;
+    %%%%%:  284-block  0
+        -:  285:
+        -:  286:
+        -:  287:}
