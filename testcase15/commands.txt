@@ -1,1 +1,3 @@
-SM C3 T
+SM D1 R
+SM D1 R
+SM D1 R
