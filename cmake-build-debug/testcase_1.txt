@@ -1,5 +1,0 @@
-stats
-help
-RM A4
-RM C1
-SM E4 T

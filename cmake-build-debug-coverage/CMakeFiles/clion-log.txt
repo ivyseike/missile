@@ -1,4 +1,1 @@
-"C:\Program Files\JetBrains\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage -G "CodeBlocks - MinGW Makefiles" C:\Users\ivyseike\CLionProjects\missile
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/ivyseike/CLionProjects/missile/cmake-build-debug-coverage
+CMakeLists.txt not found in C:\Users\ivyseike\CLionProjects\missile Select CMakeLists.txt file...

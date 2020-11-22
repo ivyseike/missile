@@ -1,3 +1,0 @@
-C:/Users/ivyseike/CLionProjects/missile/cmake-build-debug/CMakeFiles/missle.dir
-C:/Users/ivyseike/CLionProjects/missile/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/ivyseike/CLionProjects/missile/cmake-build-debug/CMakeFiles/rebuild_cache.dir
