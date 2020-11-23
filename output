@@ -1,0 +1,157 @@
+test case 1 result:
+Usage: missile <player_1_coordinate_file> <player_2_coordinate_file>
+test case 2 result:
+test case 1 result:
+Usage: missile <player_1_coordinate_file> <player_2_coordinate_file>
+test case 2 result:
+Error: invalid file name for player_coordinate_file
+test case 3 result:
+Error: invalid content for player_coordinate_file
+test case 4 result:
+Error: invalid content for player_coordinate_file
+test case 5 result:
+p1, now is your turn.
+help
+Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles.A regular missile can target one coordinate. A special missle can target one coordinate and one that is adjacent to it.Whoever destorys the first tank can get an additional special missle.The player who first destroys all 8 tanks of the opponent wins.
+test case 6 result:
+p1, now is your turn.
+reset
+Are you sure to reset the game to the initial state? Input Y to confirm.
+p1, now is your turn.
+stats
+======================================Stats Board=======================
+This is turn number 1
+p1 has targeted the following positions: 
+
+p1 has destroyed 0 tanks in the following positions: 
+
+p1 has 1 special missiles
+------------------------------------------------------------------------
+p2 has targeted the following positions: 
+
+p2 has destroyed 0 tanks in the following positions: 
+
+p2 has 1 special missiles
+========================================================================
+test case 7 result:
+p1, now is your turn.
+reset
+Are you sure to reset the game to the initial state? Input Y to confirm.
+Error: you have entered something invalid, the reset is not going to happen
+test case 8 result:
+p1, now is your turn.
+RM C2
+You have destroyed a tank!
+p2, now is your turn.
+RM C2
+You have destroyed a tank!
+p1, now is your turn.
+stats
+======================================Stats Board=======================
+This is turn number 3
+p1 has targeted the following positions: 
+C2 
+p1 has destroyed 1 tanks in the following positions: 
+C2 
+p1 has 2 special missiles
+------------------------------------------------------------------------
+p2 has targeted the following positions: 
+C2 
+p2 has destroyed 1 tanks in the following positions: 
+C2 
+p2 has 1 special missiles
+========================================================================
+test case 9 result:
+p1, now is your turn.
+RM D1
+Nothing happened!
+test case 10 result:
+p1, now is your turn.
+RM  Z1
+The input is invalid, please try again
+test case 11 result:
+p1, now is your turn.
+SM C2 R
+You have destroyed 2 tanks!
+p2, now is your turn.
+stats
+======================================Stats Board=======================
+This is turn number 2
+p1 has targeted the following positions: 
+C2 D2 
+p1 has destroyed 2 tanks in the following positions: 
+C2 D2 
+p1 has 1 special missiles
+------------------------------------------------------------------------
+p2 has targeted the following positions: 
+
+p2 has destroyed 0 tanks in the following positions: 
+
+p2 has 1 special missiles
+========================================================================
+test case 12 result:
+p1, now is your turn.
+SM D1 T
+You have destroyed 1 tanks!
+p2, now is your turn.
+stats
+======================================Stats Board=======================
+This is turn number 2
+p1 has targeted the following positions: 
+D1 D2 
+p1 has destroyed 1 tanks in the following positions: 
+D2 
+p1 has 1 special missiles
+------------------------------------------------------------------------
+p2 has targeted the following positions: 
+
+p2 has destroyed 0 tanks in the following positions: 
+
+p2 has 1 special missiles
+========================================================================
+test case 13 result:
+p1, now is your turn.
+RM C2
+You have destroyed a tank!
+p2, now is your turn.
+SM C1 T
+You have destroyed 1 tanks!
+p1, now is your turn.
+stats
+======================================Stats Board=======================
+This is turn number 3
+p1 has targeted the following positions: 
+C2 
+p1 has destroyed 1 tanks in the following positions: 
+C2 
+p1 has 2 special missiles
+------------------------------------------------------------------------
+p2 has targeted the following positions: 
+C1 C2 
+p2 has destroyed 1 tanks in the following positions: 
+C2 
+p2 has 0 special missiles
+========================================================================
+test case 14 result:
+p1, now is your turn.
+SM C3 T
+You have destroyed 0 tanks!
+test case 15 result:
+p1, now is your turn.
+SM D1 R
+You have destroyed 0 tanks!
+p2, now is your turn.
+SM D1 R
+You have destroyed 0 tanks!
+p1, now is your turn.
+SM D1 R
+You don't have any special missile!
+test case 16 result:
+p1, now is your turn.
+SM C1 C2
+The input is invalid, please try again
+test case 17 result:
+p1, now is your turn.
+ ff
+The command is invalid, please try again
+test case 18 result:
