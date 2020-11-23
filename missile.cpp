@@ -43,7 +43,7 @@ string generateNewCoordinate(string old, string direction){
 
 
 struct Player{
-    Player(string name_ = "", int tanks_= initial_tanks, int sm_ = initial_sm): name(name_),
+    Player(string name_ = "default_player", int tanks_= initial_tanks, int sm_ = initial_sm): name(name_),
             tanks(tanks_), sm(sm_) {
         for(int i=0;i<boardRow;i++){
             board.push_back(vector<int>());
@@ -178,8 +178,8 @@ int main(int argc, char *argv[]) {
                  else if(command == "help"){
                      cout << "Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. "
                              "Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles."
-                             "A regular missile can target one coordinate. A special missle can target one coordinate and one that is adjacent to it."
-                             "Whoever destorys the first tank can get an additional special missle."
+                             "A regular missile can target one coordinate. A special missile can target one coordinate and one that is adjacent to it."
+                             "Whoever destroyed the first tank can get an additional special missile."
                              "The player who first destroys all 8 tanks of the opponent wins." << endl;
                      turn_count--;
                      continue;
