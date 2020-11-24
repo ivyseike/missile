@@ -31,13 +31,13 @@
             <td class="headerValue">missileHtml.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">187</td>
-            <td class="headerCovTableEntry">189</td>
-            <td class="headerCovTableEntryHi">98.9 %</td>
+            <td class="headerCovTableEntry">183</td>
+            <td class="headerCovTableEntry">183</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-11-24 15:03:58</td>
+            <td class="headerValue">2020-11-24 15:17:37</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -49,9 +49,9 @@
             <td></td>
             <td></td>
             <td class="headerItem">Branches:</td>
-            <td class="headerCovTableEntry">164</td>
-            <td class="headerCovTableEntry">186</td>
-            <td class="headerCovTableEntryMed">88.2 %</td>
+            <td class="headerCovTableEntry">160</td>
+            <td class="headerCovTableEntry">178</td>
+            <td class="headerCovTableEntryMed">89.9 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -109,7 +109,7 @@
 <span class="lineNum">      35 </span>                :<span class="lineCov">          1 :         newC[1]--;</span>
 <span class="lineNum">      36 </span>        [<span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 3 times"> + </span>]:<span class="lineCov">          4 :     else if(direction == &quot;L&quot;)</span>
 <span class="lineNum">      37 </span>                :<span class="lineCov">          1 :         newC[0]--;</span>
-<span class="lineNum">      38 </span>        [<span class="branchCov" title="Branch 1 was taken 3 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>]:<span class="lineCov">          3 :     else if(direction == &quot;R&quot;)</span>
+<span class="lineNum">      38 </span>                :            :     else
 <span class="lineNum">      39 </span>                :<span class="lineCov">          3 :         newC[0]++;</span>
 <span class="lineNum">      40 </span>                :            : 
 <span class="lineNum">      41 </span>                :<span class="lineCov">          8 :     return newC;</span>
@@ -184,14 +184,14 @@
 <span class="lineNum">     110 </span>        [<span class="branchCov" title="Branch 0 was taken 19 times"> + </span><span class="branchCov" title="Branch 1 was taken 19 times"> + </span>]:<span class="lineCov">         38 :         else if(i == 3){</span>
 <span class="lineNum">     111 </span>                :<span class="lineCov">         19 :             players[0].name = string(argv[i]);</span>
 <span class="lineNum">     112 </span>                :            :         }
-<span class="lineNum">     113 </span>        [<span class="branchCov" title="Branch 0 was taken 19 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         19 :         else if(i == 4){</span>
+<span class="lineNum">     113 </span>                :            :         else{
 <span class="lineNum">     114 </span>                :<span class="lineCov">         19 :             players[1].name = string(argv[i]);</span>
 <span class="lineNum">     115 </span>                :            :         }
 <span class="lineNum">     116 </span>                :            :     }
 <span class="lineNum">     117 </span>                :            : 
 <span class="lineNum">     118 </span>                :<span class="lineCov">         40 :     string testcase;</span>
-<span class="lineNum">     119 </span>        [<span class="branchCov" title="Branch 0 was taken 20 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         20 :     if(argc &gt;= 2)</span>
-<span class="lineNum">     120 </span>                :<span class="lineCov">         20 :         testcase = string(argv[2]);</span>
+<span class="lineNum">     119 </span>        [<span class="branchCov" title="Branch 0 was taken 20 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>]:<span class="lineCov">         20 :     if(argc &gt; 1)</span>
+<span class="lineNum">     120 </span>                :<span class="lineCov">         20 :         testcase = string(argv[1]);</span>
 <span class="lineNum">     121 </span>                :<span class="lineCov">         20 :     int symbol = testcase.find(&quot;/&quot;);</span>
 <span class="lineNum">     122 </span>                :<span class="lineCov">         20 :     testcase = testcase.substr(0, symbol+1);</span>
 <span class="lineNum">     123 </span>                :            : 
@@ -200,182 +200,179 @@
 <span class="lineNum">     126 </span>                :<span class="lineCov">         20 :     initial_players[0] = players[0]; initial_players[1] = players[1];</span>
 <span class="lineNum">     127 </span>                :            : 
 <span class="lineNum">     128 </span>                :<span class="lineCov">         40 :     ifstream infile(testcase + &quot;commands.txt&quot;);</span>
-<span class="lineNum">     129 </span>        [<span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 20 times"> + </span>]:<span class="lineCov">         20 :     if(!infile){</span>
-<span class="lineNum">     130 </span>                :<span class="lineNoCov">          0 :         cout &lt;&lt; &quot;Test case file does not exits.&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     131 </span>                :<span class="lineNoCov">          0 :         return 0;</span>
-<span class="lineNum">     132 </span>                :            :     }
-<span class="lineNum">     133 </span>                :<span class="lineCov">         20 :     int turn_count = 0;</span>
-<span class="lineNum">     134 </span>                :<span class="lineCov">         20 :     int player = 1 ;</span>
-<span class="lineNum">     135 </span>                :<span class="lineCov">         20 :     int counter = 0;</span>
-<span class="lineNum">     136 </span>[<span class="branchCov" title="Branch 1 was taken 67 times"> + </span><span class="branchCov" title="Branch 2 was taken 18 times"> + </span>][<span class="branchCov" title="Branch 3 was taken 66 times"> + </span><span class="branchCov" title="Branch 4 was taken 1 time"> + </span>]:<span class="lineCov">         85 :     while(!infile.eof() &amp;&amp; players[0].tanks &amp;&amp; players[1].tanks){</span>
+<span class="lineNum">     129 </span>                :            : 
+<span class="lineNum">     130 </span>                :<span class="lineCov">         20 :     int turn_count = 0;</span>
+<span class="lineNum">     131 </span>                :<span class="lineCov">         20 :     int player = 1 ;</span>
+<span class="lineNum">     132 </span>                :<span class="lineCov">         20 :     int counter = 0;</span>
+<span class="lineNum">     133 </span>[<span class="branchCov" title="Branch 1 was taken 67 times"> + </span><span class="branchCov" title="Branch 2 was taken 18 times"> + </span>][<span class="branchCov" title="Branch 3 was taken 66 times"> + </span><span class="branchCov" title="Branch 4 was taken 1 time"> + </span>]:<span class="lineCov">         85 :     while(!infile.eof() &amp;&amp; players[0].tanks &amp;&amp; players[1].tanks){</span>
 <span class="lineNum">         </span>[<span class="branchCov" title="Branch 5 was taken 65 times"> + </span><span class="branchCov" title="Branch 6 was taken 1 time"> + </span>][<span class="branchCov" title="Branch 7 was taken 65 times"> + </span><span class="branchCov" title="Branch 8 was taken 20 times"> + </span>]
-<span class="lineNum">     137 </span>                :<span class="lineCov">        130 :          string command;</span>
-<span class="lineNum">     138 </span>                :<span class="lineCov">         65 :          getline(infile, command);</span>
-<span class="lineNum">     139 </span>        [<span class="branchCov" title="Branch 1 was taken 7 times"> + </span><span class="branchCov" title="Branch 2 was taken 58 times"> + </span>]:<span class="lineCov">         65 :          if(command.empty())</span>
-<span class="lineNum">     140 </span>                :<span class="lineCov">          7 :              continue;</span>
-<span class="lineNum">     141 </span>                :            :          else{
-<span class="lineNum">     142 </span>                :<span class="lineCov">         58 :              turn_count++;</span>
-<span class="lineNum">     143 </span>                :<span class="lineCov">         58 :              player = (turn_count+1) % 2;</span>
-<span class="lineNum">     144 </span>                :<span class="lineCov">         58 :              counter = (player == 1)? 0 : 1;</span>
-<span class="lineNum">     145 </span>                :<span class="lineCov">         58 :              cout &lt;&lt; players[player].name &lt;&lt; &quot;, now is your turn.&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     146 </span>                :<span class="lineCov">         58 :              cout &lt;&lt; command &lt;&lt; endl;</span>
-<span class="lineNum">     147 </span>[<span class="branchCov" title="Branch 1 was taken 52 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>][<span class="branchCov" title="Branch 4 was taken 50 times"> + </span><span class="branchCov" title="Branch 5 was taken 2 times"> + </span>]:<span class="lineCov">         58 :              if(command == &quot;stats&quot; || command == &quot;help&quot; || command == &quot;reset&quot;){</span>
+<span class="lineNum">     134 </span>                :<span class="lineCov">        130 :          string command;</span>
+<span class="lineNum">     135 </span>                :<span class="lineCov">         65 :          getline(infile, command);</span>
+<span class="lineNum">     136 </span>        [<span class="branchCov" title="Branch 1 was taken 7 times"> + </span><span class="branchCov" title="Branch 2 was taken 58 times"> + </span>]:<span class="lineCov">         65 :          if(command.empty())</span>
+<span class="lineNum">     137 </span>                :<span class="lineCov">          7 :              continue;</span>
+<span class="lineNum">     138 </span>                :            :          else{
+<span class="lineNum">     139 </span>                :<span class="lineCov">         58 :              turn_count++;</span>
+<span class="lineNum">     140 </span>                :<span class="lineCov">         58 :              player = (turn_count+1) % 2;</span>
+<span class="lineNum">     141 </span>                :<span class="lineCov">         58 :              counter = (player == 1)? 0 : 1;</span>
+<span class="lineNum">     142 </span>                :<span class="lineCov">         58 :              cout &lt;&lt; players[player].name &lt;&lt; &quot;, now is your turn.&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     143 </span>                :<span class="lineCov">         58 :              cout &lt;&lt; command &lt;&lt; endl;</span>
+<span class="lineNum">     144 </span>[<span class="branchCov" title="Branch 1 was taken 52 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>][<span class="branchCov" title="Branch 4 was taken 50 times"> + </span><span class="branchCov" title="Branch 5 was taken 2 times"> + </span>]:<span class="lineCov">         58 :              if(command == &quot;stats&quot; || command == &quot;help&quot; || command == &quot;reset&quot;){</span>
 <span class="lineNum">         </span>[<span class="branchCov" title="Branch 7 was taken 2 times"> + </span><span class="branchCov" title="Branch 8 was taken 48 times"> + </span>][<span class="branchCov" title="Branch 9 was taken 10 times"> + </span><span class="branchCov" title="Branch 10 was taken 48 times"> + </span>]
-<span class="lineNum">     148 </span>        [<span class="branchCov" title="Branch 1 was taken 6 times"> + </span><span class="branchCov" title="Branch 2 was taken 4 times"> + </span>]:<span class="lineCov">         10 :                  if(command == &quot;stats&quot;){</span>
-<span class="lineNum">     149 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; &quot;======================================Stats Board=======================&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     150 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; &quot;This is turn number &quot; &lt;&lt; turn_count &lt;&lt; endl;</span>
-<span class="lineNum">     151 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[0].name &lt;&lt; &quot; has targeted the following positions: &quot; &lt;&lt; endl;</span>
-<span class="lineNum">     152 </span>        [<span class="branchCov" title="Branch 1 was taken 6 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">         12 :                      for(int i=0;i&lt;players[0].targeted.size();i++){</span>
-<span class="lineNum">     153 </span>                :<span class="lineCov">          6 :                          cout &lt;&lt; players[0].targeted[i] &lt;&lt; &quot; &quot;;</span>
-<span class="lineNum">     154 </span>                :            :                      }
-<span class="lineNum">     155 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; endl;</span>
-<span class="lineNum">     156 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[0].name &lt;&lt; &quot; has destroyed &quot; &lt;&lt; players[0].destroyed.size() &lt;&lt; &quot; tanks in the following positions: &quot; &lt;&lt; endl;</span>
-<span class="lineNum">     157 </span>        [<span class="branchCov" title="Branch 1 was taken 5 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">         11 :                      for(int i=0;i&lt;players[0].destroyed.size();i++){</span>
-<span class="lineNum">     158 </span>                :<span class="lineCov">          5 :                          cout &lt;&lt; players[0].destroyed[i] &lt;&lt; &quot; &quot;;</span>
-<span class="lineNum">     159 </span>                :            :                      }
-<span class="lineNum">     160 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; endl;</span>
-<span class="lineNum">     161 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[0].name &lt;&lt; &quot; has &quot; &lt;&lt; players[0].sm &lt;&lt; &quot; special missiles&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     162 </span>                :<span class="lineCov">          6 :                       cout &lt;&lt; &quot;------------------------------------------------------------------------&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     163 </span>                :<span class="lineCov">          6 :                       cout &lt;&lt; players[1].name &lt;&lt; &quot; has targeted the following positions: &quot; &lt;&lt; endl;</span>
-<span class="lineNum">     164 </span>        [<span class="branchCov" title="Branch 1 was taken 3 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">          9 :                      for(int i=0;i&lt;players[1].targeted.size();i++){</span>
-<span class="lineNum">     165 </span>                :<span class="lineCov">          3 :                          cout &lt;&lt; players[1].targeted[i] &lt;&lt; &quot; &quot;;</span>
-<span class="lineNum">     166 </span>                :            :                      }
-<span class="lineNum">     167 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; endl;</span>
-<span class="lineNum">     168 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[1].name &lt;&lt; &quot; has destroyed &quot; &lt;&lt; players[1].destroyed.size() &lt;&lt; &quot; tanks in the following positions: &quot; &lt;&lt; endl;</span>
-<span class="lineNum">     169 </span>        [<span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">          8 :                      for(int i=0;i&lt;players[1].destroyed.size();i++){</span>
-<span class="lineNum">     170 </span>                :<span class="lineCov">          2 :                          cout &lt;&lt; players[1].destroyed[i] &lt;&lt; &quot; &quot;;</span>
-<span class="lineNum">     171 </span>                :            :                      }
-<span class="lineNum">     172 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; endl;</span>
-<span class="lineNum">     173 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[1].name &lt;&lt; &quot; has &quot; &lt;&lt; players[1].sm &lt;&lt; &quot; special missiles&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     174 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; &quot;========================================================================&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     175 </span>                :<span class="lineCov">          6 :                       turn_count--;</span>
-<span class="lineNum">     176 </span>                :<span class="lineCov">          6 :                      continue;</span>
-<span class="lineNum">     177 </span>                :            :                  }
-<span class="lineNum">     178 </span>        [<span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchCov" title="Branch 2 was taken 2 times"> + </span>]:<span class="lineCov">          4 :                  else if(command == &quot;help&quot;){</span>
-<span class="lineNum">     179 </span>                :            :                      cout &lt;&lt; &quot;Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. &quot;
-<span class="lineNum">     180 </span>                :            :                              &quot;Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles.&quot;
-<span class="lineNum">     181 </span>                :            :                              &quot;A regular missile can target one coordinate. A special missile can target one coordinate and one that is adjacent to it.&quot;
-<span class="lineNum">     182 </span>                :            :                              &quot;Whoever destroyed the first tank can get an additional special missile.&quot;
-<span class="lineNum">     183 </span>                :<span class="lineCov">          2 :                              &quot;The player who first destroys all 8 tanks of the opponent wins.&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     184 </span>                :<span class="lineCov">          2 :                      turn_count--;</span>
-<span class="lineNum">     185 </span>                :<span class="lineCov">          2 :                      continue;</span>
-<span class="lineNum">     186 </span>                :            :                  }
-<span class="lineNum">     187 </span>                :            :                  else{
-<span class="lineNum">     188 </span>                :<span class="lineCov">          2 :                      cout &lt;&lt; &quot;Are you sure to reset the game to the initial state? Input Y to confirm.&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     189 </span>                :<span class="lineCov">          4 :                      string choice;</span>
-<span class="lineNum">     190 </span>                :<span class="lineCov">          2 :                      getline(infile, choice);</span>
-<span class="lineNum">     191 </span>        [<span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 1 time"> + </span>]:<span class="lineCov">          2 :                      if(choice == &quot;Y&quot;){</span>
-<span class="lineNum">     192 </span>                :<span class="lineCov">          1 :                          players[0] = initial_players[0];</span>
-<span class="lineNum">     193 </span>                :<span class="lineCov">          1 :                          players[1] = initial_players[1];</span>
-<span class="lineNum">     194 </span>                :<span class="lineCov">          1 :                          turn_count = 0;</span>
-<span class="lineNum">     195 </span>                :<span class="lineCov">          1 :                          continue;</span>
-<span class="lineNum">     196 </span>                :            :                      }
-<span class="lineNum">     197 </span>                :            :                      else{
-<span class="lineNum">     198 </span>                :<span class="lineCov">          1 :                          cout &lt;&lt; &quot;Error: you have entered something invalid, the reset is not going to happen&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     199 </span>                :<span class="lineCov">          1 :                          turn_count--;</span>
-<span class="lineNum">     200 </span>                :<span class="lineCov">          1 :                          continue;</span>
-<span class="lineNum">     201 </span>                :            :                      }
-<span class="lineNum">     202 </span>                :            :                  }
-<span class="lineNum">     203 </span>                :            :              }
-<span class="lineNum">     204 </span>                :            :              else{
-<span class="lineNum">     205 </span>        [<span class="branchCov" title="Branch 2 was taken 42 times"> + </span><span class="branchCov" title="Branch 3 was taken 23 times"> + </span>]:<span class="lineCov">        113 :                  vector&lt;string&gt; split_list;</span>
-<span class="lineNum">     206 </span>                :<span class="lineCov">         48 :                  split_command(command, split_list);</span>
-<span class="lineNum">     207 </span>[<span class="branchCov" title="Branch 1 was taken 48 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchCov" title="Branch 5 was taken 12 times"> + </span><span class="branchCov" title="Branch 6 was taken 36 times"> + </span>]:<span class="lineCov">         48 :                  if(split_list.size() &amp;&amp; split_list[0] == &quot;RM&quot; || split_list[0] == &quot;SM&quot;){</span>
+<span class="lineNum">     145 </span>        [<span class="branchCov" title="Branch 1 was taken 6 times"> + </span><span class="branchCov" title="Branch 2 was taken 4 times"> + </span>]:<span class="lineCov">         10 :                  if(command == &quot;stats&quot;){</span>
+<span class="lineNum">     146 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; &quot;======================================Stats Board=======================&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     147 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; &quot;This is turn number &quot; &lt;&lt; turn_count &lt;&lt; endl;</span>
+<span class="lineNum">     148 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[0].name &lt;&lt; &quot; has targeted the following positions: &quot; &lt;&lt; endl;</span>
+<span class="lineNum">     149 </span>        [<span class="branchCov" title="Branch 1 was taken 6 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">         12 :                      for(int i=0;i&lt;players[0].targeted.size();i++){</span>
+<span class="lineNum">     150 </span>                :<span class="lineCov">          6 :                          cout &lt;&lt; players[0].targeted[i] &lt;&lt; &quot; &quot;;</span>
+<span class="lineNum">     151 </span>                :            :                      }
+<span class="lineNum">     152 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; endl;</span>
+<span class="lineNum">     153 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[0].name &lt;&lt; &quot; has destroyed &quot; &lt;&lt; players[0].destroyed.size() &lt;&lt; &quot; tanks in the following positions: &quot; &lt;&lt; endl;</span>
+<span class="lineNum">     154 </span>        [<span class="branchCov" title="Branch 1 was taken 5 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">         11 :                      for(int i=0;i&lt;players[0].destroyed.size();i++){</span>
+<span class="lineNum">     155 </span>                :<span class="lineCov">          5 :                          cout &lt;&lt; players[0].destroyed[i] &lt;&lt; &quot; &quot;;</span>
+<span class="lineNum">     156 </span>                :            :                      }
+<span class="lineNum">     157 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; endl;</span>
+<span class="lineNum">     158 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[0].name &lt;&lt; &quot; has &quot; &lt;&lt; players[0].sm &lt;&lt; &quot; special missiles&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     159 </span>                :<span class="lineCov">          6 :                       cout &lt;&lt; &quot;------------------------------------------------------------------------&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     160 </span>                :<span class="lineCov">          6 :                       cout &lt;&lt; players[1].name &lt;&lt; &quot; has targeted the following positions: &quot; &lt;&lt; endl;</span>
+<span class="lineNum">     161 </span>        [<span class="branchCov" title="Branch 1 was taken 3 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">          9 :                      for(int i=0;i&lt;players[1].targeted.size();i++){</span>
+<span class="lineNum">     162 </span>                :<span class="lineCov">          3 :                          cout &lt;&lt; players[1].targeted[i] &lt;&lt; &quot; &quot;;</span>
+<span class="lineNum">     163 </span>                :            :                      }
+<span class="lineNum">     164 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; endl;</span>
+<span class="lineNum">     165 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[1].name &lt;&lt; &quot; has destroyed &quot; &lt;&lt; players[1].destroyed.size() &lt;&lt; &quot; tanks in the following positions: &quot; &lt;&lt; endl;</span>
+<span class="lineNum">     166 </span>        [<span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">          8 :                      for(int i=0;i&lt;players[1].destroyed.size();i++){</span>
+<span class="lineNum">     167 </span>                :<span class="lineCov">          2 :                          cout &lt;&lt; players[1].destroyed[i] &lt;&lt; &quot; &quot;;</span>
+<span class="lineNum">     168 </span>                :            :                      }
+<span class="lineNum">     169 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; endl;</span>
+<span class="lineNum">     170 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; players[1].name &lt;&lt; &quot; has &quot; &lt;&lt; players[1].sm &lt;&lt; &quot; special missiles&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     171 </span>                :<span class="lineCov">          6 :                      cout &lt;&lt; &quot;========================================================================&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     172 </span>                :<span class="lineCov">          6 :                       turn_count--;</span>
+<span class="lineNum">     173 </span>                :<span class="lineCov">          6 :                      continue;</span>
+<span class="lineNum">     174 </span>                :            :                  }
+<span class="lineNum">     175 </span>        [<span class="branchCov" title="Branch 1 was taken 2 times"> + </span><span class="branchCov" title="Branch 2 was taken 2 times"> + </span>]:<span class="lineCov">          4 :                  else if(command == &quot;help&quot;){</span>
+<span class="lineNum">     176 </span>                :            :                      cout &lt;&lt; &quot;Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. &quot;
+<span class="lineNum">     177 </span>                :            :                              &quot;Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles.&quot;
+<span class="lineNum">     178 </span>                :            :                              &quot;A regular missile can target one coordinate. A special missile can target one coordinate and one that is adjacent to it.&quot;
+<span class="lineNum">     179 </span>                :            :                              &quot;Whoever destroyed the first tank can get an additional special missile.&quot;
+<span class="lineNum">     180 </span>                :<span class="lineCov">          2 :                              &quot;The player who first destroys all 8 tanks of the opponent wins.&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     181 </span>                :<span class="lineCov">          2 :                      turn_count--;</span>
+<span class="lineNum">     182 </span>                :<span class="lineCov">          2 :                      continue;</span>
+<span class="lineNum">     183 </span>                :            :                  }
+<span class="lineNum">     184 </span>                :            :                  else{
+<span class="lineNum">     185 </span>                :<span class="lineCov">          2 :                      cout &lt;&lt; &quot;Are you sure to reset the game to the initial state? Input Y to confirm.&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     186 </span>                :<span class="lineCov">          4 :                      string choice;</span>
+<span class="lineNum">     187 </span>                :<span class="lineCov">          2 :                      getline(infile, choice);</span>
+<span class="lineNum">     188 </span>        [<span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 1 time"> + </span>]:<span class="lineCov">          2 :                      if(choice == &quot;Y&quot;){</span>
+<span class="lineNum">     189 </span>                :<span class="lineCov">          1 :                          players[0] = initial_players[0];</span>
+<span class="lineNum">     190 </span>                :<span class="lineCov">          1 :                          players[1] = initial_players[1];</span>
+<span class="lineNum">     191 </span>                :<span class="lineCov">          1 :                          turn_count = 0;</span>
+<span class="lineNum">     192 </span>                :<span class="lineCov">          1 :                          continue;</span>
+<span class="lineNum">     193 </span>                :            :                      }
+<span class="lineNum">     194 </span>                :            :                      else{
+<span class="lineNum">     195 </span>                :<span class="lineCov">          1 :                          cout &lt;&lt; &quot;Error: you have entered something invalid, the reset is not going to happen&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     196 </span>                :<span class="lineCov">          1 :                          turn_count--;</span>
+<span class="lineNum">     197 </span>                :<span class="lineCov">          1 :                          continue;</span>
+<span class="lineNum">     198 </span>                :            :                      }
+<span class="lineNum">     199 </span>                :            :                  }
+<span class="lineNum">     200 </span>                :            :              }
+<span class="lineNum">     201 </span>                :            :              else{
+<span class="lineNum">     202 </span>        [<span class="branchCov" title="Branch 2 was taken 42 times"> + </span><span class="branchCov" title="Branch 3 was taken 23 times"> + </span>]:<span class="lineCov">        113 :                  vector&lt;string&gt; split_list;</span>
+<span class="lineNum">     203 </span>                :<span class="lineCov">         48 :                  split_command(command, split_list);</span>
+<span class="lineNum">     204 </span>[<span class="branchCov" title="Branch 1 was taken 48 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchCov" title="Branch 5 was taken 12 times"> + </span><span class="branchCov" title="Branch 6 was taken 36 times"> + </span>]:<span class="lineCov">         48 :                  if(split_list.size() &amp;&amp; split_list[0] == &quot;RM&quot; || split_list[0] == &quot;SM&quot;){</span>
 <span class="lineNum">         </span>[<span class="branchCov" title="Branch 9 was taken 11 times"> + </span><span class="branchCov" title="Branch 10 was taken 1 time"> + </span>][<span class="branchCov" title="Branch 11 was taken 47 times"> + </span><span class="branchCov" title="Branch 12 was taken 1 time"> + </span>]
-<span class="lineNum">     208 </span>        [<span class="branchCov" title="Branch 2 was taken 36 times"> + </span><span class="branchCov" title="Branch 3 was taken 11 times"> + </span>]:<span class="lineCov">         47 :                      if(split_list[0] == &quot;RM&quot;){</span>
-<span class="lineNum">     209 </span>[<span class="branchCov" title="Branch 1 was taken 34 times"> + </span><span class="branchCov" title="Branch 2 was taken 2 times"> + </span>][<span class="branchCov" title="Branch 6 was taken 34 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]:<span class="lineCov">         36 :                          if(split_list.size() == 2 &amp;&amp; verifyCoordinate(split_list[1])){</span>
+<span class="lineNum">     205 </span>        [<span class="branchCov" title="Branch 2 was taken 36 times"> + </span><span class="branchCov" title="Branch 3 was taken 11 times"> + </span>]:<span class="lineCov">         47 :                      if(split_list[0] == &quot;RM&quot;){</span>
+<span class="lineNum">     206 </span>[<span class="branchCov" title="Branch 1 was taken 34 times"> + </span><span class="branchCov" title="Branch 2 was taken 2 times"> + </span>][<span class="branchCov" title="Branch 6 was taken 34 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]:<span class="lineCov">         36 :                          if(split_list.size() == 2 &amp;&amp; verifyCoordinate(split_list[1])){</span>
 <span class="lineNum">         </span>[<span class="branchCov" title="Branch 8 was taken 34 times"> + </span><span class="branchCov" title="Branch 9 was taken 2 times"> + </span>][<span class="branchCov" title="Branch 11 was taken 34 times"> + </span><span class="branchCov" title="Branch 12 was taken 2 times"> + </span>]
-<span class="lineNum">     210 </span>                :<span class="lineCov">         34 :                              players[player].targeted.push_back(split_list[1]);</span>
-<span class="lineNum">     211 </span>        [<span class="branchCov" title="Branch 6 was taken 20 times"> + </span><span class="branchCov" title="Branch 7 was taken 14 times"> + </span>]:<span class="lineCov">         34 :                              if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){</span>
-<span class="lineNum">     212 </span>[<span class="branchCov" title="Branch 1 was taken 11 times"> + </span><span class="branchCov" title="Branch 2 was taken 9 times"> + </span>][<span class="branchCov" title="Branch 4 was taken 4 times"> + </span><span class="branchCov" title="Branch 5 was taken 7 times"> + </span>]:<span class="lineCov">         20 :                                  if(players[0].destroyed.size() == 0 &amp;&amp; players[1].destroyed.size() == 0){</span>
+<span class="lineNum">     207 </span>                :<span class="lineCov">         34 :                              players[player].targeted.push_back(split_list[1]);</span>
+<span class="lineNum">     208 </span>        [<span class="branchCov" title="Branch 6 was taken 20 times"> + </span><span class="branchCov" title="Branch 7 was taken 14 times"> + </span>]:<span class="lineCov">         34 :                              if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){</span>
+<span class="lineNum">     209 </span>[<span class="branchCov" title="Branch 1 was taken 11 times"> + </span><span class="branchCov" title="Branch 2 was taken 9 times"> + </span>][<span class="branchCov" title="Branch 4 was taken 4 times"> + </span><span class="branchCov" title="Branch 5 was taken 7 times"> + </span>]:<span class="lineCov">         20 :                                  if(players[0].destroyed.size() == 0 &amp;&amp; players[1].destroyed.size() == 0){</span>
 <span class="lineNum">         </span>        [<span class="branchCov" title="Branch 6 was taken 4 times"> + </span><span class="branchCov" title="Branch 7 was taken 16 times"> + </span>]
-<span class="lineNum">     213 </span>                :<span class="lineCov">          4 :                                      players[player].sm++;</span>
-<span class="lineNum">     214 </span>                :            :                                  }
-<span class="lineNum">     215 </span>                :<span class="lineCov">         20 :                                  players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;</span>
-<span class="lineNum">     216 </span>                :<span class="lineCov">         20 :                                  players[player].destroyed.push_back(split_list[1]);</span>
-<span class="lineNum">     217 </span>                :<span class="lineCov">         20 :                                  players[counter].tanks--;</span>
-<span class="lineNum">     218 </span>                :<span class="lineCov">         20 :                                  cout &lt;&lt; &quot;You have destroyed a tank!&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     219 </span>                :            :                               }
-<span class="lineNum">     220 </span>                :            :                              else{
-<span class="lineNum">     221 </span>                :<span class="lineCov">         34 :                                  cout &lt;&lt; &quot;Nothing happened!&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     222 </span>                :            :                              }
-<span class="lineNum">     223 </span>                :            :                          }
-<span class="lineNum">     224 </span>                :            :                          else{
-<span class="lineNum">     225 </span>                :<span class="lineCov">          2 :                              cout &lt;&lt; &quot;The input is invalid, please try again&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     226 </span>                :<span class="lineCov">          2 :                              turn_count--;</span>
-<span class="lineNum">     227 </span>                :<span class="lineCov">          2 :                              continue;</span>
-<span class="lineNum">     228 </span>                :            :                          }
-<span class="lineNum">     229 </span>                :            :                      }
-<span class="lineNum">     230 </span>        [<span class="branchCov" title="Branch 2 was taken 11 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">         11 :                      else if(split_list[0] == &quot;SM&quot;){</span>
-<span class="lineNum">     231 </span>        [<span class="branchCov" title="Branch 1 was taken 10 times"> + </span><span class="branchCov" title="Branch 2 was taken 1 time"> + </span>]:<span class="lineCov">         28 :                          if(split_list.size() == 3 &amp;&amp; verifyCoordinate(split_list[1]) &amp;&amp;</span>
+<span class="lineNum">     210 </span>                :<span class="lineCov">          4 :                                      players[player].sm++;</span>
+<span class="lineNum">     211 </span>                :            :                                  }
+<span class="lineNum">     212 </span>                :<span class="lineCov">         20 :                                  players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;</span>
+<span class="lineNum">     213 </span>                :<span class="lineCov">         20 :                                  players[player].destroyed.push_back(split_list[1]);</span>
+<span class="lineNum">     214 </span>                :<span class="lineCov">         20 :                                  players[counter].tanks--;</span>
+<span class="lineNum">     215 </span>                :<span class="lineCov">         20 :                                  cout &lt;&lt; &quot;You have destroyed a tank!&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     216 </span>                :            :                               }
+<span class="lineNum">     217 </span>                :            :                              else{
+<span class="lineNum">     218 </span>                :<span class="lineCov">         34 :                                  cout &lt;&lt; &quot;Nothing happened!&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     219 </span>                :            :                              }
+<span class="lineNum">     220 </span>                :            :                          }
+<span class="lineNum">     221 </span>                :            :                          else{
+<span class="lineNum">     222 </span>                :<span class="lineCov">          2 :                              cout &lt;&lt; &quot;The input is invalid, please try again&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     223 </span>                :<span class="lineCov">          2 :                              turn_count--;</span>
+<span class="lineNum">     224 </span>                :<span class="lineCov">          2 :                              continue;</span>
+<span class="lineNum">     225 </span>                :            :                          }
+<span class="lineNum">     226 </span>                :            :                      }
+<span class="lineNum">     227 </span>                :            :                      else{
+<span class="lineNum">     228 </span>        [<span class="branchCov" title="Branch 1 was taken 10 times"> + </span><span class="branchCov" title="Branch 2 was taken 1 time"> + </span>]:<span class="lineCov">         28 :                          if(split_list.size() == 3 &amp;&amp; verifyCoordinate(split_list[1]) &amp;&amp;</span>
 <span class="lineNum">         </span>  [<span class="branchCov" title="Branch 6 was taken 10 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span><span class="branchCov" title="Branch 8 was taken 7 times"> + </span><span class="branchCov" title="Branch 9 was taken 3 times"> + </span>]
 <span class="lineNum">         </span>[<span class="branchCov" title="Branch 10 was taken 10 times"> + </span><span class="branchCov" title="Branch 11 was taken 1 time"> + </span>][<span class="branchCov" title="Branch 13 was taken 9 times"> + </span><span class="branchCov" title="Branch 14 was taken 2 times"> + </span>]
-<span class="lineNum">     232 </span>[<span class="branchCov" title="Branch 4 was taken 6 times"> + </span><span class="branchCov" title="Branch 5 was taken 1 time"> + </span>][<span class="branchCov" title="Branch 8 was taken 5 times"> + </span><span class="branchCov" title="Branch 9 was taken 1 time"> + </span>]:<span class="lineCov">         17 :                             (split_list[2] == &quot;T&quot; || split_list[2] == &quot;L&quot; || split_list[2] == &quot;B&quot;</span>
-<span class="lineNum">     233 </span>        [<span class="branchCov" title="Branch 2 was taken 4 times"> + </span><span class="branchCov" title="Branch 3 was taken 1 time"> + </span>]:<span class="lineCov">          5 :                              || split_list[2] == &quot;R&quot;)){</span>
-<span class="lineNum">     234 </span>        [<span class="branchCov" title="Branch 0 was taken 8 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          9 :                              if(players[player].sm){</span>
-<span class="lineNum">     235 </span>                :<span class="lineCov">          8 :                                  players[player].targeted.push_back(split_list[1]);</span>
-<span class="lineNum">     236 </span>                :<span class="lineCov">          8 :                                  int destroyed_tank = 0;</span>
-<span class="lineNum">     237 </span>        [<span class="branchCov" title="Branch 6 was taken 1 time"> + </span><span class="branchCov" title="Branch 7 was taken 7 times"> + </span>]:<span class="lineCov">          8 :                                  if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){</span>
-<span class="lineNum">     238 </span>[<span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchCov" title="Branch 4 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span>]:<span class="lineCov">          1 :                                      if(players[0].destroyed.size() == 0 &amp;&amp; players[1].destroyed.size() == 0){</span>
+<span class="lineNum">     229 </span>[<span class="branchCov" title="Branch 4 was taken 6 times"> + </span><span class="branchCov" title="Branch 5 was taken 1 time"> + </span>][<span class="branchCov" title="Branch 8 was taken 5 times"> + </span><span class="branchCov" title="Branch 9 was taken 1 time"> + </span>]:<span class="lineCov">         17 :                             (split_list[2] == &quot;T&quot; || split_list[2] == &quot;L&quot; || split_list[2] == &quot;B&quot;</span>
+<span class="lineNum">     230 </span>        [<span class="branchCov" title="Branch 2 was taken 4 times"> + </span><span class="branchCov" title="Branch 3 was taken 1 time"> + </span>]:<span class="lineCov">          5 :                              || split_list[2] == &quot;R&quot;)){</span>
+<span class="lineNum">     231 </span>        [<span class="branchCov" title="Branch 0 was taken 8 times"> + </span><span class="branchCov" title="Branch 1 was taken 1 time"> + </span>]:<span class="lineCov">          9 :                              if(players[player].sm){</span>
+<span class="lineNum">     232 </span>                :<span class="lineCov">          8 :                                  players[player].targeted.push_back(split_list[1]);</span>
+<span class="lineNum">     233 </span>                :<span class="lineCov">          8 :                                  int destroyed_tank = 0;</span>
+<span class="lineNum">     234 </span>        [<span class="branchCov" title="Branch 6 was taken 1 time"> + </span><span class="branchCov" title="Branch 7 was taken 7 times"> + </span>]:<span class="lineCov">          8 :                                  if(players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] == 1){</span>
+<span class="lineNum">     235 </span>[<span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchCov" title="Branch 4 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span>]:<span class="lineCov">          1 :                                      if(players[0].destroyed.size() == 0 &amp;&amp; players[1].destroyed.size() == 0){</span>
 <span class="lineNum">         </span>        [<span class="branchCov" title="Branch 6 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
-<span class="lineNum">     239 </span>                :<span class="lineCov">          1 :                                          players[player].sm++;</span>
-<span class="lineNum">     240 </span>                :            :                                      }
-<span class="lineNum">     241 </span>                :<span class="lineCov">          1 :                                      players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;</span>
-<span class="lineNum">     242 </span>                :<span class="lineCov">          1 :                                      players[counter].tanks--;</span>
-<span class="lineNum">     243 </span>                :<span class="lineCov">          1 :                                      players[player].destroyed.push_back(split_list[1]);</span>
-<span class="lineNum">     244 </span>                :<span class="lineCov">          1 :                                      destroyed_tank++;</span>
-<span class="lineNum">     245 </span>                :            :                                   }
-<span class="lineNum">     246 </span>                :<span class="lineCov">         16 :                                  string newC = generateNewCoordinate(split_list[1], split_list[2]);</span>
-<span class="lineNum">     247 </span>        [<span class="branchCov" title="Branch 3 was taken 7 times"> + </span><span class="branchCov" title="Branch 4 was taken 1 time"> + </span>]:<span class="lineCov">          8 :                                  if(verifyCoordinate(newC)){</span>
-<span class="lineNum">     248 </span>                :<span class="lineCov">          7 :                                      players[player].targeted.push_back(newC);</span>
-<span class="lineNum">     249 </span>        [<span class="branchCov" title="Branch 4 was taken 3 times"> + </span><span class="branchCov" title="Branch 5 was taken 4 times"> + </span>]:<span class="lineCov">          7 :                                      if(players[counter].board[newC[1]-'1'][newC[0]-'A'] == 1){</span>
-<span class="lineNum">     250 </span>[<span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 2 times"> + </span>][<span class="branchCov" title="Branch 4 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span>]:<span class="lineCov">          3 :                                          if(players[0].destroyed.size() == 0 &amp;&amp; players[1].destroyed.size() == 0){</span>
+<span class="lineNum">     236 </span>                :<span class="lineCov">          1 :                                          players[player].sm++;</span>
+<span class="lineNum">     237 </span>                :            :                                      }
+<span class="lineNum">     238 </span>                :<span class="lineCov">          1 :                                      players[counter].board[split_list[1][1]-'1'][split_list[1][0]-'A'] = 0;</span>
+<span class="lineNum">     239 </span>                :<span class="lineCov">          1 :                                      players[counter].tanks--;</span>
+<span class="lineNum">     240 </span>                :<span class="lineCov">          1 :                                      players[player].destroyed.push_back(split_list[1]);</span>
+<span class="lineNum">     241 </span>                :<span class="lineCov">          1 :                                      destroyed_tank++;</span>
+<span class="lineNum">     242 </span>                :            :                                   }
+<span class="lineNum">     243 </span>                :<span class="lineCov">         16 :                                  string newC = generateNewCoordinate(split_list[1], split_list[2]);</span>
+<span class="lineNum">     244 </span>        [<span class="branchCov" title="Branch 3 was taken 7 times"> + </span><span class="branchCov" title="Branch 4 was taken 1 time"> + </span>]:<span class="lineCov">          8 :                                  if(verifyCoordinate(newC)){</span>
+<span class="lineNum">     245 </span>                :<span class="lineCov">          7 :                                      players[player].targeted.push_back(newC);</span>
+<span class="lineNum">     246 </span>        [<span class="branchCov" title="Branch 4 was taken 3 times"> + </span><span class="branchCov" title="Branch 5 was taken 4 times"> + </span>]:<span class="lineCov">          7 :                                      if(players[counter].board[newC[1]-'1'][newC[0]-'A'] == 1){</span>
+<span class="lineNum">     247 </span>[<span class="branchCov" title="Branch 1 was taken 1 time"> + </span><span class="branchCov" title="Branch 2 was taken 2 times"> + </span>][<span class="branchCov" title="Branch 4 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span>]:<span class="lineCov">          3 :                                          if(players[0].destroyed.size() == 0 &amp;&amp; players[1].destroyed.size() == 0){</span>
 <span class="lineNum">         </span>        [<span class="branchCov" title="Branch 6 was taken 1 time"> + </span><span class="branchCov" title="Branch 7 was taken 2 times"> + </span>]
-<span class="lineNum">     251 </span>                :<span class="lineCov">          1 :                                              players[player].sm++;</span>
-<span class="lineNum">     252 </span>                :            :                                          }
-<span class="lineNum">     253 </span>                :<span class="lineCov">          3 :                                          players[counter].board[newC[1]-'1'][newC[0]-'A'] = 0;</span>
-<span class="lineNum">     254 </span>                :<span class="lineCov">          3 :                                          players[player].destroyed.push_back(newC);</span>
-<span class="lineNum">     255 </span>                :<span class="lineCov">          3 :                                          players[counter].tanks--;</span>
-<span class="lineNum">     256 </span>                :<span class="lineCov">          3 :                                          destroyed_tank++;</span>
-<span class="lineNum">     257 </span>                :            :                                      }
-<span class="lineNum">     258 </span>                :            :                                  }
-<span class="lineNum">     259 </span>                :<span class="lineCov">          8 :                                   cout &lt;&lt; &quot;You have destroyed &quot; &lt;&lt; destroyed_tank &lt;&lt; &quot; tanks!&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     260 </span>                :<span class="lineCov">          8 :                                  players[player].sm--;</span>
-<span class="lineNum">     261 </span>                :            :                              }
-<span class="lineNum">     262 </span>                :            :                              else{
-<span class="lineNum">     263 </span>                :<span class="lineCov">          1 :                                  cout &lt;&lt; &quot;You don't have any special missile!&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     264 </span>                :<span class="lineCov">          1 :                                  turn_count--;</span>
-<span class="lineNum">     265 </span>                :<span class="lineCov">          9 :                                  continue;</span>
-<span class="lineNum">     266 </span>                :            :                              }
-<span class="lineNum">     267 </span>                :            :                          }
-<span class="lineNum">     268 </span>                :            :                          else{
-<span class="lineNum">     269 </span>                :<span class="lineCov">          2 :                              cout &lt;&lt; &quot;The input is invalid, please try again&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     270 </span>                :<span class="lineCov">          2 :                              turn_count--;</span>
-<span class="lineNum">     271 </span>                :<span class="lineCov">         44 :                              continue;</span>
-<span class="lineNum">     272 </span>                :            :                          }
-<span class="lineNum">     273 </span>                :            :                      }
-<span class="lineNum">     274 </span>                :            :                  }
-<span class="lineNum">     275 </span>                :            :                  else{
-<span class="lineNum">     276 </span>                :<span class="lineCov">          1 :                      cout &lt;&lt; &quot;The command is invalid, please try again&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     277 </span>                :<span class="lineCov">          1 :                      turn_count--;</span>
-<span class="lineNum">     278 </span>        [<span class="branchCov" title="Branch 1 was taken 42 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">         48 :                      continue;</span>
-<span class="lineNum">     279 </span>                :            :                  }
-<span class="lineNum">     280 </span>                :            :              }
-<span class="lineNum">     281 </span>                :            :          }
-<span class="lineNum">     282 </span>                :            :     }
-<span class="lineNum">     283 </span>                :            : 
-<span class="lineNum">     284 </span>[<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 19 times"> + </span>][<span class="branchCov" title="Branch 2 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">         20 :         if(players[0].tanks == 0 &amp;&amp; players[1].tanks){</span>
-<span class="lineNum">     285 </span>                :<span class="lineCov">          1 :                 cout &lt;&lt; players[1].name &lt;&lt; &quot;, you have won!&quot; &lt;&lt; endl;       </span>
+<span class="lineNum">     248 </span>                :<span class="lineCov">          1 :                                              players[player].sm++;</span>
+<span class="lineNum">     249 </span>                :            :                                          }
+<span class="lineNum">     250 </span>                :<span class="lineCov">          3 :                                          players[counter].board[newC[1]-'1'][newC[0]-'A'] = 0;</span>
+<span class="lineNum">     251 </span>                :<span class="lineCov">          3 :                                          players[player].destroyed.push_back(newC);</span>
+<span class="lineNum">     252 </span>                :<span class="lineCov">          3 :                                          players[counter].tanks--;</span>
+<span class="lineNum">     253 </span>                :<span class="lineCov">          3 :                                          destroyed_tank++;</span>
+<span class="lineNum">     254 </span>                :            :                                      }
+<span class="lineNum">     255 </span>                :            :                                  }
+<span class="lineNum">     256 </span>                :<span class="lineCov">          8 :                                   cout &lt;&lt; &quot;You have destroyed &quot; &lt;&lt; destroyed_tank &lt;&lt; &quot; tanks!&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     257 </span>                :<span class="lineCov">          8 :                                  players[player].sm--;</span>
+<span class="lineNum">     258 </span>                :            :                              }
+<span class="lineNum">     259 </span>                :            :                              else{
+<span class="lineNum">     260 </span>                :<span class="lineCov">          1 :                                  cout &lt;&lt; &quot;You don't have any special missile!&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     261 </span>                :<span class="lineCov">          1 :                                  turn_count--;</span>
+<span class="lineNum">     262 </span>                :<span class="lineCov">          9 :                                  continue;</span>
+<span class="lineNum">     263 </span>                :            :                              }
+<span class="lineNum">     264 </span>                :            :                          }
+<span class="lineNum">     265 </span>                :            :                          else{
+<span class="lineNum">     266 </span>                :<span class="lineCov">          2 :                              cout &lt;&lt; &quot;The input is invalid, please try again&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     267 </span>                :<span class="lineCov">          2 :                              turn_count--;</span>
+<span class="lineNum">     268 </span>                :<span class="lineCov">         44 :                              continue;</span>
+<span class="lineNum">     269 </span>                :            :                          }
+<span class="lineNum">     270 </span>                :            :                      }
+<span class="lineNum">     271 </span>                :            :                  }
+<span class="lineNum">     272 </span>                :            :                  else{
+<span class="lineNum">     273 </span>                :<span class="lineCov">          1 :                      cout &lt;&lt; &quot;The command is invalid, please try again&quot; &lt;&lt; endl;</span>
+<span class="lineNum">     274 </span>                :<span class="lineCov">          1 :                      turn_count--;</span>
+<span class="lineNum">     275 </span>        [<span class="branchCov" title="Branch 1 was taken 42 times"> + </span><span class="branchCov" title="Branch 2 was taken 6 times"> + </span>]:<span class="lineCov">         48 :                      continue;</span>
+<span class="lineNum">     276 </span>                :            :                  }
+<span class="lineNum">     277 </span>                :            :              }
+<span class="lineNum">     278 </span>                :            :          }
+<span class="lineNum">     279 </span>                :            :     }
+<span class="lineNum">     280 </span>                :            : 
+<span class="lineNum">     281 </span>[<span class="branchCov" title="Branch 0 was taken 1 time"> + </span><span class="branchCov" title="Branch 1 was taken 19 times"> + </span>][<span class="branchCov" title="Branch 2 was taken 1 time"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">         20 :         if(players[0].tanks == 0 &amp;&amp; players[1].tanks){</span>
+<span class="lineNum">     282 </span>                :<span class="lineCov">          1 :                 cout &lt;&lt; players[1].name &lt;&lt; &quot;, you have won!&quot; &lt;&lt; endl;       </span>
+<span class="lineNum">     283 </span>                :            :         }
+<span class="lineNum">     284 </span>[<span class="branchCov" title="Branch 0 was taken 19 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>][<span class="branchCov" title="Branch 2 was taken 1 time"> + </span><span class="branchCov" title="Branch 3 was taken 18 times"> + </span>]:<span class="lineCov">         19 :         else if(players[0].tanks &amp;&amp; players[1].tanks == 0){</span>
+<span class="lineNum">     285 </span>                :<span class="lineCov">          1 :                 cout &lt;&lt; players[0].name &lt;&lt; &quot;, you have won!&quot; &lt;&lt; endl;</span>
 <span class="lineNum">     286 </span>                :            :         }
-<span class="lineNum">     287 </span>[<span class="branchCov" title="Branch 0 was taken 19 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>][<span class="branchCov" title="Branch 2 was taken 1 time"> + </span><span class="branchCov" title="Branch 3 was taken 18 times"> + </span>]:<span class="lineCov">         19 :         else if(players[0].tanks &amp;&amp; players[1].tanks == 0){</span>
-<span class="lineNum">     288 </span>                :<span class="lineCov">          1 :                 cout &lt;&lt; players[0].name &lt;&lt; &quot;, you have won!&quot; &lt;&lt; endl;</span>
-<span class="lineNum">     289 </span>                :            :         }
-<span class="lineNum">     290 </span>                :            :         
+<span class="lineNum">     287 </span>                :            :         
+<span class="lineNum">     288 </span>                :            : 
+<span class="lineNum">     289 </span>                :<span class="lineCov">         20 :     return 0;</span>
+<a name="290"><span class="lineNum">     290 </span>                :            : </a>
 <span class="lineNum">     291 </span>                :            : 
-<span class="lineNum">     292 </span>                :<span class="lineCov">         20 :     return 0;</span>
-<a name="293"><span class="lineNum">     293 </span>                :            : </a>
-<span class="lineNum">     294 </span>                :            : 
-<span class="lineNum">     295 </span>[<span class="branchCov" title="Branch 1 was taken 25 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchCov" title="Branch 3 was taken 25 times"> + </span><span class="branchNoCov" title="Branch 4 was not taken"> - </span>]:<span class="lineCov">        100 : }</span>
+<span class="lineNum">     292 </span>[<span class="branchCov" title="Branch 1 was taken 25 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchCov" title="Branch 3 was taken 25 times"> + </span><span class="branchNoCov" title="Branch 4 was not taken"> - </span>]:<span class="lineCov">        100 : }</span>
 </pre>
       </td>
     </tr>

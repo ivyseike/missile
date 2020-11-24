@@ -35,7 +35,7 @@ string generateNewCoordinate(string old, string direction){
         newC[1]--;
     else if(direction == "L")
         newC[0]--;
-    else if(direction == "R")
+    else
         newC[0]++;
 
     return newC;
@@ -110,14 +110,14 @@ int main(int argc, char *argv[]) {
         else if(i == 3){
             players[0].name = string(argv[i]);
         }
-        else if(i == 4){
+        else{
             players[1].name = string(argv[i]);
         }
     }
 
     string testcase;
-    if(argc >= 2)
-        testcase = string(argv[2]);
+    if(argc > 1)
+        testcase = string(argv[1]);
     int symbol = testcase.find("/");
     testcase = testcase.substr(0, symbol+1);
 
@@ -126,10 +126,7 @@ int main(int argc, char *argv[]) {
     initial_players[0] = players[0]; initial_players[1] = players[1];
 
     ifstream infile(testcase + "commands.txt");
-    if(!infile){
-        cout << "Test case file does not exits." << endl;
-        return 0;
-    }
+
     int turn_count = 0;
     int player = 1 ;
     int counter = 0;
@@ -227,7 +224,7 @@ int main(int argc, char *argv[]) {
                              continue;
                          }
                      }
-                     else if(split_list[0] == "SM"){
+                     else{
                          if(split_list.size() == 3 && verifyCoordinate(split_list[1]) &&
                             (split_list[2] == "T" || split_list[2] == "L" || split_list[2] == "B"
                              || split_list[2] == "R")){
