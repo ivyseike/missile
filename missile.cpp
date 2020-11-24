@@ -116,8 +116,7 @@ int main(int argc, char *argv[]) {
     }
 
     string testcase;
-    if(argc > 1)
-        testcase = string(argv[1]);
+    testcase = string(argv[1]);
     int symbol = testcase.find("/");
     testcase = testcase.substr(0, symbol+1);
 
@@ -283,6 +282,9 @@ int main(int argc, char *argv[]) {
 	}
 	else if(players[0].tanks && players[1].tanks == 0){
 		cout << players[0].name << ", you have won!" << endl;
+	}
+	else{
+		cout << "You have run out of commands!" << endl;
 	}
 	
 

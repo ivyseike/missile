@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-11-24 15:17:37</td>
+            <td class="headerValue">2020-11-24 15:27:46</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">2</td>
@@ -5993,12 +5993,12 @@
 <span class="lineNum">    5922 </span>                :            :    */
 <a name="5923"><span class="lineNum">    5923 </span>                :            :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</a>
 <span class="lineNum">    5924 </span>                :            :     inline basic_string&lt;_CharT, _Traits, _Alloc&gt;
-<span class="lineNum">    5925 </span>                :<span class="lineCov">         40 :     operator+(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span>
+<span class="lineNum">    5925 </span>                :<span class="lineCov">         20 :     operator+(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span>
 <span class="lineNum">    5926 </span>                :            :               const _CharT* __rhs)
 <span class="lineNum">    5927 </span>                :            :     {
-<span class="lineNum">    5928 </span>                :<span class="lineCov">         40 :       basic_string&lt;_CharT, _Traits, _Alloc&gt; __str(__lhs);</span>
-<span class="lineNum">    5929 </span>                :<span class="lineCov">         40 :       __str.append(__rhs);</span>
-<span class="lineNum">    5930 </span>                :<span class="lineCov">         40 :       return __str;</span>
+<span class="lineNum">    5928 </span>                :<span class="lineCov">         20 :       basic_string&lt;_CharT, _Traits, _Alloc&gt; __str(__lhs);</span>
+<span class="lineNum">    5929 </span>                :<span class="lineCov">         20 :       __str.append(__rhs);</span>
+<span class="lineNum">    5930 </span>                :<span class="lineCov">         20 :       return __str;</span>
 <span class="lineNum">    5931 </span>                :            :     }
 <span class="lineNum">    5932 </span>                :            : 
 <span class="lineNum">    5933 </span>                :            :   /**
@@ -6111,9 +6111,9 @@
 <span class="lineNum">    6040 </span>                :            :    */
 <a name="6041"><span class="lineNum">    6041 </span>                :            :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</a>
 <span class="lineNum">    6042 </span>                :            :     inline bool
-<span class="lineNum">    6043 </span>                :<span class="lineCov">        656 :     operator==(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span>
+<span class="lineNum">    6043 </span>                :<span class="lineCov">        328 :     operator==(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span>
 <span class="lineNum">    6044 </span>                :            :                const _CharT* __rhs)
-<span class="lineNum">    6045 </span>                :<span class="lineCov">        656 :     { return __lhs.compare(__rhs) == 0; }</span>
+<span class="lineNum">    6045 </span>                :<span class="lineCov">        328 :     { return __lhs.compare(__rhs) == 0; }</span>
 <span class="lineNum">    6046 </span>                :            : 
 <span class="lineNum">    6047 </span>                :            :   // operator !=
 <span class="lineNum">    6048 </span>                :            :   /**
