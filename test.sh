@@ -53,4 +53,23 @@ echo "test case 17 result:" >> output
 echo "test case 18 result:" >> output
 ./missile testcase18/file1.txt testcase18/file2.txt >> output
 
+echo "test case 19 result:" >> output
+./missile testcase19/file1.txt testcase19/file2.txt p1 p2 >> output
 
+echo "test case 20 result:" >> output
+./missile testcase20/file1.txt testcase20/nonexistent.txt p1 p2 >> output
+
+echo "test case 21 result:" >> output
+./missile testcase21/file1.txt testcase21/file2.txt p1 p2 >> output
+
+echo "test case 22 result:" >> output
+./missile testcase22/file1.txt testcase22/file2.txt p1 p2 >> output
+
+echo "test case 23 result:" >> output
+./missile testcase23/file1.txt testcase23/file2.txt p1 p2 >> output
+
+echo "test case 24 result:" >> output
+./missile testcase24/file1.txt testcase24/file2.txt p1 p2 >> output
+
+echo "test case 25 result:" >> output
+./missile testcase25/file1.txt testcase25/file2.txt p1 p2 >> output

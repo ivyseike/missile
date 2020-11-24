@@ -7,11 +7,10 @@ RM D3
 RM B3
 RM E3
 RM B3
-RM F3   
+RM F3
 RM B3
 RM B2
 RM B3
 RM C2
 RM B3
-RM D2     
-stats
+RM D2

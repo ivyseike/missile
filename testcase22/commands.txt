@@ -6,12 +6,11 @@ RM C2
 RM B3
 RM D2
 RM B3
-RM E2   
+RM E2
 RM B3
 RM F2
 RM B3
 RM G2
 RM B3
 RM H2
-RM B3     
-stats
+RM B3

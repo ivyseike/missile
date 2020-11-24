@@ -1,6 +1,4 @@
-test case 1 result:
-Usage: missile <player_1_coordinate_file> <player_2_coordinate_file>
-test case 2 result:
+
 test case 1 result:
 Usage: missile <player_1_coordinate_file> <player_2_coordinate_file>
 test case 2 result:
@@ -12,7 +10,7 @@ Error: invalid content for player_coordinate_file
 test case 5 result:
 p1, now is your turn.
 help
-Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles.A regular missile can target one coordinate. A special missle can target one coordinate and one that is adjacent to it.Whoever destorys the first tank can get an additional special missle.The player who first destroys all 8 tanks of the opponent wins.
+Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles.A regular missile can target one coordinate. A special missile can target one coordinate and one that is adjacent to it.Whoever destroyed the first tank can get an additional special missile.The player who first destroys all 8 tanks of the opponent wins.
 test case 6 result:
 p1, now is your turn.
 reset
@@ -155,3 +153,134 @@ p1, now is your turn.
  ff
 The command is invalid, please try again
 test case 18 result:
+default_player, now is your turn.
+help
+Missile is a game where 2 players each have a 4x8 board which is hidden from the other player. Initially, each player has 8 tanks placed on the board, 1 special missile and infinite regular missiles.A regular missile can target one coordinate. A special missile can target one coordinate and one that is adjacent to it.Whoever destroyed the first tank can get an additional special missile.The player who first destroys all 8 tanks of the opponent wins.
+test case 19 result:
+p1, now is your turn.
+stats
+======================================Stats Board=======================
+This is turn number 1
+p1 has targeted the following positions: 
+
+p1 has destroyed 0 tanks in the following positions: 
+
+p1 has 1 special missiles
+------------------------------------------------------------------------
+p2 has targeted the following positions: 
+
+p2 has destroyed 0 tanks in the following positions: 
+
+p2 has 1 special missiles
+========================================================================
+test case 20 result:
+Error: invalid file name for player_coordinate_file
+test case 21 result:
+p1, now is your turn.
+SM B3 L
+You have destroyed 0 tanks!
+p2, now is your turn.
+RM B3
+You have destroyed a tank!
+p1, now is your turn.
+RM B3
+Nothing happened!
+p2, now is your turn.
+RM C3
+You have destroyed a tank!
+p1, now is your turn.
+RM B3
+Nothing happened!
+p2, now is your turn.
+RM D3
+You have destroyed a tank!
+p1, now is your turn.
+RM B3
+Nothing happened!
+p2, now is your turn.
+RM E3
+You have destroyed a tank!
+p1, now is your turn.
+RM B3
+Nothing happened!
+p2, now is your turn.
+RM F3
+You have destroyed a tank!
+p1, now is your turn.
+RM B3
+Nothing happened!
+p2, now is your turn.
+RM B2
+You have destroyed a tank!
+p1, now is your turn.
+RM B3
+Nothing happened!
+p2, now is your turn.
+RM C2
+You have destroyed a tank!
+p1, now is your turn.
+RM B3
+Nothing happened!
+p2, now is your turn.
+RM D2
+You have destroyed a tank!
+p2, you have won!
+test case 22 result:
+p1, now is your turn.
+RM A2
+You have destroyed a tank!
+p2, now is your turn.
+RM B3
+You have destroyed a tank!
+p1, now is your turn.
+RM B2
+You have destroyed a tank!
+p2, now is your turn.
+RM B3
+Nothing happened!
+p1, now is your turn.
+RM C2
+You have destroyed a tank!
+p2, now is your turn.
+RM B3
+Nothing happened!
+p1, now is your turn.
+RM D2
+You have destroyed a tank!
+p2, now is your turn.
+RM B3
+Nothing happened!
+p1, now is your turn.
+RM E2
+You have destroyed a tank!
+p2, now is your turn.
+RM B3
+Nothing happened!
+p1, now is your turn.
+RM F2
+You have destroyed a tank!
+p2, now is your turn.
+RM B3
+Nothing happened!
+p1, now is your turn.
+RM G2
+You have destroyed a tank!
+p2, now is your turn.
+RM B3
+Nothing happened!
+p1, now is your turn.
+RM H2
+You have destroyed a tank!
+p1, you have won!
+test case 23 result:
+p1, now is your turn.
+SM B3 L p1
+The input is invalid, please try again
+test case 24 result:
+p1, now is your turn.
+RM D2 p1
+The input is invalid, please try again
+test case 25 result:
+p1, now is your turn.
+SM B1 B
+You have destroyed 0 tanks!
