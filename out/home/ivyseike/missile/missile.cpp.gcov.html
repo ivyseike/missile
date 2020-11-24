@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-11-24 15:52:52</td>
+            <td class="headerValue">2020-11-24 16:11:03</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">9</td>
@@ -49,9 +49,9 @@
             <td></td>
             <td></td>
             <td class="headerItem">Branches:</td>
-            <td class="headerCovTableEntry">159</td>
-            <td class="headerCovTableEntry">176</td>
-            <td class="headerCovTableEntryHi">90.3 %</td>
+            <td class="headerCovTableEntry">158</td>
+            <td class="headerCovTableEntry">174</td>
+            <td class="headerCovTableEntryHi">90.8 %</td>
           </tr>
           <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -93,10 +93,10 @@
 <span class="lineNum">      19 </span>                :<span class="lineCov">         48 : void split_command(string command, vector&lt;string&gt; &amp;split_list){</span>
 <span class="lineNum">      20 </span>                :<span class="lineCov">         48 :     int found = command.find_first_of(&quot; &quot;);</span>
 <span class="lineNum">      21 </span>                :<span class="lineCov">         48 :     int start = 0;</span>
-<span class="lineNum">      22 </span>        [<span class="branchCov" title="Branch 0 was taken 62 times"> + </span><span class="branchCov" title="Branch 1 was taken 48 times"> + </span>]:<span class="lineCov">        110 :     while(found != string::npos){</span>
-<span class="lineNum">      23 </span>                :<span class="lineCov">         62 :         split_list.push_back(command.substr(start, found-start));</span>
-<span class="lineNum">      24 </span>                :<span class="lineCov">         62 :         start = found+1;</span>
-<span class="lineNum">      25 </span>                :<span class="lineCov">         62 :         found = command.find_first_of(&quot; &quot;, start);</span>
+<span class="lineNum">      22 </span>        [<span class="branchCov" title="Branch 0 was taken 61 times"> + </span><span class="branchCov" title="Branch 1 was taken 48 times"> + </span>]:<span class="lineCov">        109 :     while(found != string::npos){</span>
+<span class="lineNum">      23 </span>                :<span class="lineCov">         61 :         split_list.push_back(command.substr(start, found-start));</span>
+<span class="lineNum">      24 </span>                :<span class="lineCov">         61 :         start = found+1;</span>
+<span class="lineNum">      25 </span>                :<span class="lineCov">         61 :         found = command.find_first_of(&quot; &quot;, start);</span>
 <span class="lineNum">      26 </span>                :            :     }
 <span class="lineNum">      27 </span>                :<span class="lineCov">         48 :     split_list.push_back(command.substr(start));</span>
 <a name="28"><span class="lineNum">      28 </span>                :<span class="lineCov">         48 : }</span></a>
@@ -203,12 +203,12 @@
 <span class="lineNum">     129 </span>                :<span class="lineCov">         20 :     int turn_count = 0;</span>
 <span class="lineNum">     130 </span>                :<span class="lineCov">         20 :     int player = 1 ;</span>
 <span class="lineNum">     131 </span>                :<span class="lineCov">         20 :     int counter = 0;</span>
-<span class="lineNum">     132 </span>[<span class="branchCov" title="Branch 1 was taken 67 times"> + </span><span class="branchCov" title="Branch 2 was taken 18 times"> + </span>][<span class="branchCov" title="Branch 3 was taken 66 times"> + </span><span class="branchCov" title="Branch 4 was taken 1 time"> + </span>]:<span class="lineCov">         85 :     while(!infile.eof() &amp;&amp; players[0].tanks &amp;&amp; players[1].tanks){</span>
-<span class="lineNum">         </span>[<span class="branchCov" title="Branch 5 was taken 65 times"> + </span><span class="branchCov" title="Branch 6 was taken 1 time"> + </span>][<span class="branchCov" title="Branch 7 was taken 65 times"> + </span><span class="branchCov" title="Branch 8 was taken 20 times"> + </span>]
-<span class="lineNum">     133 </span>                :<span class="lineCov">        130 :          string command;</span>
-<span class="lineNum">     134 </span>                :<span class="lineCov">         65 :          getline(infile, command);</span>
-<span class="lineNum">     135 </span>        [<span class="branchCov" title="Branch 1 was taken 7 times"> + </span><span class="branchCov" title="Branch 2 was taken 58 times"> + </span>]:<span class="lineCov">         65 :          if(command.empty())</span>
-<span class="lineNum">     136 </span>                :<span class="lineCov">          7 :              continue;</span>
+<span class="lineNum">     132 </span>[<span class="branchCov" title="Branch 1 was taken 68 times"> + </span><span class="branchCov" title="Branch 2 was taken 18 times"> + </span>][<span class="branchCov" title="Branch 3 was taken 67 times"> + </span><span class="branchCov" title="Branch 4 was taken 1 time"> + </span>]:<span class="lineCov">         86 :     while(!infile.eof() &amp;&amp; players[0].tanks &amp;&amp; players[1].tanks){</span>
+<span class="lineNum">         </span>[<span class="branchCov" title="Branch 5 was taken 66 times"> + </span><span class="branchCov" title="Branch 6 was taken 1 time"> + </span>][<span class="branchCov" title="Branch 7 was taken 66 times"> + </span><span class="branchCov" title="Branch 8 was taken 20 times"> + </span>]
+<span class="lineNum">     133 </span>                :<span class="lineCov">        132 :          string command;</span>
+<span class="lineNum">     134 </span>                :<span class="lineCov">         66 :          getline(infile, command);</span>
+<span class="lineNum">     135 </span>        [<span class="branchCov" title="Branch 1 was taken 8 times"> + </span><span class="branchCov" title="Branch 2 was taken 58 times"> + </span>]:<span class="lineCov">         66 :          if(command.empty())</span>
+<span class="lineNum">     136 </span>                :<span class="lineCov">          8 :              continue;</span>
 <span class="lineNum">     137 </span>                :            :          else{
 <span class="lineNum">     138 </span>                :<span class="lineCov">         58 :              turn_count++;</span>
 <span class="lineNum">     139 </span>                :<span class="lineCov">         58 :              player = (turn_count+1) % 2;</span>
@@ -274,10 +274,10 @@
 <span class="lineNum">     198 </span>                :            :                  }
 <span class="lineNum">     199 </span>                :            :              }
 <span class="lineNum">     200 </span>                :            :              else{
-<span class="lineNum">     201 </span>        [<span class="branchCov" title="Branch 2 was taken 42 times"> + </span><span class="branchCov" title="Branch 3 was taken 23 times"> + </span>]:<span class="lineCov">        113 :                  vector&lt;string&gt; split_list;</span>
+<span class="lineNum">     201 </span>        [<span class="branchCov" title="Branch 2 was taken 42 times"> + </span><span class="branchCov" title="Branch 3 was taken 24 times"> + </span>]:<span class="lineCov">        114 :                  vector&lt;string&gt; split_list;</span>
 <span class="lineNum">     202 </span>                :<span class="lineCov">         48 :                  split_command(command, split_list);</span>
-<span class="lineNum">     203 </span>[<span class="branchCov" title="Branch 1 was taken 48 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchCov" title="Branch 5 was taken 12 times"> + </span><span class="branchCov" title="Branch 6 was taken 36 times"> + </span>]:<span class="lineCov">         48 :                  if(split_list.size() &amp;&amp; split_list[0] == &quot;RM&quot; || split_list[0] == &quot;SM&quot;){</span>
-<span class="lineNum">         </span>[<span class="branchCov" title="Branch 9 was taken 11 times"> + </span><span class="branchCov" title="Branch 10 was taken 1 time"> + </span>][<span class="branchCov" title="Branch 11 was taken 47 times"> + </span><span class="branchCov" title="Branch 12 was taken 1 time"> + </span>]
+<span class="lineNum">     203 </span>[<span class="branchCov" title="Branch 2 was taken 12 times"> + </span><span class="branchCov" title="Branch 3 was taken 36 times"> + </span>][<span class="branchCov" title="Branch 6 was taken 11 times"> + </span><span class="branchCov" title="Branch 7 was taken 1 time"> + </span>]:<span class="lineCov">         48 :                  if(split_list[0] == &quot;RM&quot; || split_list[0] == &quot;SM&quot;){</span>
+<span class="lineNum">         </span>        [<span class="branchCov" title="Branch 8 was taken 47 times"> + </span><span class="branchCov" title="Branch 9 was taken 1 time"> + </span>]
 <span class="lineNum">     204 </span>        [<span class="branchCov" title="Branch 2 was taken 36 times"> + </span><span class="branchCov" title="Branch 3 was taken 11 times"> + </span>]:<span class="lineCov">         47 :                      if(split_list[0] == &quot;RM&quot;){</span>
 <span class="lineNum">     205 </span>[<span class="branchCov" title="Branch 1 was taken 34 times"> + </span><span class="branchCov" title="Branch 2 was taken 2 times"> + </span>][<span class="branchCov" title="Branch 6 was taken 34 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]:<span class="lineCov">         36 :                          if(split_list.size() == 2 &amp;&amp; verifyCoordinate(split_list[1])){</span>
 <span class="lineNum">         </span>[<span class="branchCov" title="Branch 8 was taken 34 times"> + </span><span class="branchCov" title="Branch 9 was taken 2 times"> + </span>][<span class="branchCov" title="Branch 11 was taken 34 times"> + </span><span class="branchCov" title="Branch 12 was taken 2 times"> + </span>]

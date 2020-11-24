@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-11-24 15:52:52</td>
+            <td class="headerValue">2020-11-24 16:11:03</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">20</td>
@@ -167,10 +167,10 @@
 <span class="lineNum">      96 </span>                :            :       // NB: __n is permitted to be 0.  The C++ standard says nothing
 <a name="97"><span class="lineNum">      97 </span>                :            :       // about what the return value is when __n == 0.</a>
 <span class="lineNum">      98 </span>                :            :       pointer
-<span class="lineNum">      99 </span>                :<span class="lineCov">       4006 :       allocate(size_type __n, const void* = static_cast&lt;const void*&gt;(0))</span>
+<span class="lineNum">      99 </span>                :<span class="lineCov">       4004 :       allocate(size_type __n, const void* = static_cast&lt;const void*&gt;(0))</span>
 <span class="lineNum">     100 </span>                :            :       {
-<span class="lineNum">     101 </span>[<span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 1408 times"> + </span>][<span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 264 times"> + </span>]:<span class="lineCov">       4006 :         if (__n &gt; this-&gt;max_size())</span>
-<span class="lineNum">         </span>        [<span class="branchNoCov" title="Branch 7 was not taken"> - </span><span class="branchCov" title="Branch 8 was taken 331 times"> + </span>]
+<span class="lineNum">     101 </span>[<span class="branchNoCov" title="Branch 1 was not taken"> - </span><span class="branchCov" title="Branch 2 was taken 1408 times"> + </span>][<span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 264 times"> + </span>]:<span class="lineCov">       4004 :         if (__n &gt; this-&gt;max_size())</span>
+<span class="lineNum">         </span>        [<span class="branchNoCov" title="Branch 7 was not taken"> - </span><span class="branchCov" title="Branch 8 was taken 330 times"> + </span>]
 <span class="lineNum">     102 </span>                :<span class="lineNoCov">          0 :           std::__throw_bad_alloc();</span>
 <span class="lineNum">     103 </span>                :            : 
 <span class="lineNum">     104 </span>                :            : #if __cpp_aligned_new
@@ -180,12 +180,12 @@
 <span class="lineNum">     108 </span>                :            :             return static_cast&lt;_Tp*&gt;(::operator new(__n * sizeof(_Tp), __al));
 <span class="lineNum">     109 </span>                :            :           }
 <span class="lineNum">     110 </span>                :            : #endif
-<span class="lineNum">     111 </span>                :<span class="lineCov">       4006 :         return static_cast&lt;_Tp*&gt;(::operator new(__n * sizeof(_Tp)));</span>
+<span class="lineNum">     111 </span>                :<span class="lineCov">       4004 :         return static_cast&lt;_Tp*&gt;(::operator new(__n * sizeof(_Tp)));</span>
 <span class="lineNum">     112 </span>                :            :       }
 <span class="lineNum">     113 </span>                :            : 
 <a name="114"><span class="lineNum">     114 </span>                :            :       // __p is not permitted to be a null pointer.</a>
 <span class="lineNum">     115 </span>                :            :       void
-<span class="lineNum">     116 </span>                :<span class="lineCov">       4006 :       deallocate(pointer __p, size_type)</span>
+<span class="lineNum">     116 </span>                :<span class="lineCov">       4004 :       deallocate(pointer __p, size_type)</span>
 <span class="lineNum">     117 </span>                :            :       {
 <span class="lineNum">     118 </span>                :            : #if __cpp_aligned_new
 <span class="lineNum">     119 </span>                :            :         if (alignof(_Tp) &gt; __STDCPP_DEFAULT_NEW_ALIGNMENT__)
@@ -194,19 +194,19 @@
 <span class="lineNum">     122 </span>                :            :             return;
 <span class="lineNum">     123 </span>                :            :           }
 <span class="lineNum">     124 </span>                :            : #endif
-<span class="lineNum">     125 </span>                :<span class="lineCov">       4006 :         ::operator delete(__p);</span>
-<span class="lineNum">     126 </span>                :<span class="lineCov">       4006 :       }</span>
+<span class="lineNum">     125 </span>                :<span class="lineCov">       4004 :         ::operator delete(__p);</span>
+<span class="lineNum">     126 </span>                :<span class="lineCov">       4004 :       }</span>
 <a name="127"><span class="lineNum">     127 </span>                :            : </a>
 <span class="lineNum">     128 </span>                :            :       size_type
-<span class="lineNum">     129 </span>                :<span class="lineCov">      12018 :       max_size() const _GLIBCXX_USE_NOEXCEPT</span>
-<span class="lineNum">     130 </span>                :<span class="lineCov">      12018 :       { return size_t(-1) / sizeof(_Tp); }</span>
+<span class="lineNum">     129 </span>                :<span class="lineCov">      12012 :       max_size() const _GLIBCXX_USE_NOEXCEPT</span>
+<span class="lineNum">     130 </span>                :<span class="lineCov">      12012 :       { return size_t(-1) / sizeof(_Tp); }</span>
 <span class="lineNum">     131 </span>                :            : 
 <span class="lineNum">     132 </span>                :            : #if __cplusplus &gt;= 201103L
 <a name="133"><span class="lineNum">     133 </span>                :            :       template&lt;typename _Up, typename... _Args&gt;</a>
 <span class="lineNum">     134 </span>                :            :         void
-<span class="lineNum">     135 </span>                :<span class="lineCov">       7388 :         construct(_Up* __p, _Args&amp;&amp;... __args)</span>
-<span class="lineNum">     136 </span>[<span class="branchCov" title="Branch 2 was taken 2816 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>][<span class="branchCov" title="Branch 6 was taken 352 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]:<span class="lineCov">       7388 :         { ::new((void *)__p) _Up(std::forward&lt;_Args&gt;(__args)...); }</span>
-<span class="lineNum">         </span>[<span class="branchCov" title="Branch 11 was taken 110 times"> + </span><span class="branchNoCov" title="Branch 12 was not taken"> - </span>][<span class="branchCov" title="Branch 16 was taken 416 times"> + </span><span class="branchNoCov" title="Branch 17 was not taken"> - </span>]
+<span class="lineNum">     135 </span>                :<span class="lineCov">       7386 :         construct(_Up* __p, _Args&amp;&amp;... __args)</span>
+<span class="lineNum">     136 </span>[<span class="branchCov" title="Branch 2 was taken 2816 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>][<span class="branchCov" title="Branch 6 was taken 352 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]:<span class="lineCov">       7386 :         { ::new((void *)__p) _Up(std::forward&lt;_Args&gt;(__args)...); }</span>
+<span class="lineNum">         </span>[<span class="branchCov" title="Branch 11 was taken 109 times"> + </span><span class="branchNoCov" title="Branch 12 was not taken"> - </span>][<span class="branchCov" title="Branch 16 was taken 416 times"> + </span><span class="branchNoCov" title="Branch 17 was not taken"> - </span>]
 <span class="lineNum">     137 </span>                :            : 
 <span class="lineNum">     138 </span>                :            :       template&lt;typename _Up&gt;
 <span class="lineNum">     139 </span>                :            :         void

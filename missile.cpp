@@ -200,7 +200,7 @@ int main(int argc, char *argv[]) {
              else{
                  vector<string> split_list;
                  split_command(command, split_list);
-                 if(split_list.size() && split_list[0] == "RM" || split_list[0] == "SM"){
+                 if(split_list[0] == "RM" || split_list[0] == "SM"){
                      if(split_list[0] == "RM"){
                          if(split_list.size() == 2 && verifyCoordinate(split_list[1])){
                              players[player].targeted.push_back(split_list[1]);

@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-11-24 15:52:52</td>
+            <td class="headerValue">2020-11-24 16:11:03</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">65</td>
@@ -183,12 +183,12 @@
 <span class="lineNum">     112 </span>                :            :       typedef _Alloc allocator_type;
 <a name="113"><span class="lineNum">     113 </span>                :            : </a>
 <span class="lineNum">     114 </span>                :            :       _Tp_alloc_type&amp;
-<span class="lineNum">     115 </span>                :<span class="lineCov">      16484 :       _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     116 </span>                :<span class="lineCov">      16484 :       { return *static_cast&lt;_Tp_alloc_type*&gt;(&amp;this-&gt;_M_impl); }</span>
+<span class="lineNum">     115 </span>                :<span class="lineCov">      16478 :       _M_get_Tp_allocator() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     116 </span>                :<span class="lineCov">      16478 :       { return *static_cast&lt;_Tp_alloc_type*&gt;(&amp;this-&gt;_M_impl); }</span>
 <a name="117"><span class="lineNum">     117 </span>                :            : </a>
 <span class="lineNum">     118 </span>                :            :       const _Tp_alloc_type&amp;
-<span class="lineNum">     119 </span>                :<span class="lineCov">       8012 :       _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     120 </span>                :<span class="lineCov">       8012 :       { return *static_cast&lt;const _Tp_alloc_type*&gt;(&amp;this-&gt;_M_impl); }</span>
+<span class="lineNum">     119 </span>                :<span class="lineCov">       8008 :       _M_get_Tp_allocator() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     120 </span>                :<span class="lineCov">       8008 :       { return *static_cast&lt;const _Tp_alloc_type*&gt;(&amp;this-&gt;_M_impl); }</span>
 <span class="lineNum">     121 </span>                :            : 
 <span class="lineNum">     122 </span>                :            :       allocator_type
 <span class="lineNum">     123 </span>                :            :       get_allocator() const _GLIBCXX_NOEXCEPT
@@ -237,21 +237,21 @@
 <span class="lineNum">     166 </span>                :            :       _Vector_impl _M_impl;
 <a name="167"><span class="lineNum">     167 </span>                :            : </a>
 <span class="lineNum">     168 </span>                :            :       pointer
-<span class="lineNum">     169 </span>                :<span class="lineCov">       4006 :       _M_allocate(size_t __n)</span>
+<span class="lineNum">     169 </span>                :<span class="lineCov">       4004 :       _M_allocate(size_t __n)</span>
 <span class="lineNum">     170 </span>                :            :       {
 <span class="lineNum">     171 </span>                :            :         typedef __gnu_cxx::__alloc_traits&lt;_Tp_alloc_type&gt; _Tr;
-<span class="lineNum">     172 </span>[<span class="branchCov" title="Branch 0 was taken 1408 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>][<span class="branchCov" title="Branch 3 was taken 264 times"> + </span><span class="branchNoCov" title="Branch 4 was not taken"> - </span>]:<span class="lineCov">       4006 :         return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();</span>
-<span class="lineNum">         </span>        [<span class="branchCov" title="Branch 6 was taken 331 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
+<span class="lineNum">     172 </span>[<span class="branchCov" title="Branch 0 was taken 1408 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>][<span class="branchCov" title="Branch 3 was taken 264 times"> + </span><span class="branchNoCov" title="Branch 4 was not taken"> - </span>]:<span class="lineCov">       4004 :         return __n != 0 ? _Tr::allocate(_M_impl, __n) : pointer();</span>
+<span class="lineNum">         </span>        [<span class="branchCov" title="Branch 6 was taken 330 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span>]
 <span class="lineNum">     173 </span>                :            :       }
 <a name="174"><span class="lineNum">     174 </span>                :            : </a>
 <span class="lineNum">     175 </span>                :            :       void
-<span class="lineNum">     176 </span>                :<span class="lineCov">       6652 :       _M_deallocate(pointer __p, size_t __n)</span>
+<span class="lineNum">     176 </span>                :<span class="lineCov">       6650 :       _M_deallocate(pointer __p, size_t __n)</span>
 <span class="lineNum">     177 </span>                :            :       {
 <span class="lineNum">     178 </span>                :            :         typedef __gnu_cxx::__alloc_traits&lt;_Tp_alloc_type&gt; _Tr;
-<span class="lineNum">     179 </span>[<span class="branchCov" title="Branch 0 was taken 1408 times"> + </span><span class="branchCov" title="Branch 1 was taken 968 times"> + </span>][<span class="branchCov" title="Branch 2 was taken 331 times"> + </span><span class="branchCov" title="Branch 3 was taken 267 times"> + </span>]:<span class="lineCov">       6652 :         if (__p)</span>
+<span class="lineNum">     179 </span>[<span class="branchCov" title="Branch 0 was taken 1408 times"> + </span><span class="branchCov" title="Branch 1 was taken 968 times"> + </span>][<span class="branchCov" title="Branch 2 was taken 330 times"> + </span><span class="branchCov" title="Branch 3 was taken 267 times"> + </span>]:<span class="lineCov">       6650 :         if (__p)</span>
 <span class="lineNum">         </span>        [<span class="branchCov" title="Branch 4 was taken 264 times"> + </span><span class="branchCov" title="Branch 5 was taken 88 times"> + </span>]
-<span class="lineNum">     180 </span>                :<span class="lineCov">       4006 :           _Tr::deallocate(_M_impl, __p, __n);</span>
-<span class="lineNum">     181 </span>                :<span class="lineCov">       6652 :       }</span>
+<span class="lineNum">     180 </span>                :<span class="lineCov">       4004 :           _Tr::deallocate(_M_impl, __p, __n);</span>
+<span class="lineNum">     181 </span>                :<span class="lineCov">       6650 :       }</span>
 <span class="lineNum">     182 </span>                :            : 
 <a name="183"><span class="lineNum">     183 </span>                :            :     private:</a>
 <span class="lineNum">     184 </span>                :            :       void
@@ -633,8 +633,8 @@
 <span class="lineNum">     560 </span>                :            :        *  element order.
 <a name="561"><span class="lineNum">     561 </span>                :            :        */</a>
 <span class="lineNum">     562 </span>                :            :       iterator
-<span class="lineNum">     563 </span>                :<span class="lineCov">       4594 :       begin() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     564 </span>                :<span class="lineCov">       4594 :       { return iterator(this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">     563 </span>                :<span class="lineCov">       4592 :       begin() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     564 </span>                :<span class="lineCov">       4592 :       { return iterator(this-&gt;_M_impl._M_start); }</span>
 <span class="lineNum">     565 </span>                :            : 
 <span class="lineNum">     566 </span>                :            :       /**
 <span class="lineNum">     567 </span>                :            :        *  Returns a read-only (constant) iterator that points to the
@@ -651,8 +651,8 @@
 <span class="lineNum">     578 </span>                :            :        *  element order.
 <a name="579"><span class="lineNum">     579 </span>                :            :        */</a>
 <span class="lineNum">     580 </span>                :            :       iterator
-<span class="lineNum">     581 </span>                :<span class="lineCov">       4594 :       end() _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     582 </span>                :<span class="lineCov">       4594 :       { return iterator(this-&gt;_M_impl._M_finish); }</span>
+<span class="lineNum">     581 </span>                :<span class="lineCov">       4592 :       end() _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     582 </span>                :<span class="lineCov">       4592 :       { return iterator(this-&gt;_M_impl._M_finish); }</span>
 <span class="lineNum">     583 </span>                :            : 
 <span class="lineNum">     584 </span>                :            :       /**
 <span class="lineNum">     585 </span>                :            :        *  Returns a read-only (constant) iterator that points one past
@@ -740,13 +740,13 @@
 <span class="lineNum">     667 </span>                :            :       // [23.2.4.2] capacity
 <a name="668"><span class="lineNum">     668 </span>                :            :       /**  Returns the number of elements in the %vector.  */</a>
 <span class="lineNum">     669 </span>                :            :       size_type
-<span class="lineNum">     670 </span>                :<span class="lineCov">      17654 :       size() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     671 </span>                :<span class="lineCov">      17654 :       { return size_type(this-&gt;_M_impl._M_finish - this-&gt;_M_impl._M_start); }</span>
+<span class="lineNum">     670 </span>                :<span class="lineCov">      17550 :       size() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     671 </span>                :<span class="lineCov">      17550 :       { return size_type(this-&gt;_M_impl._M_finish - this-&gt;_M_impl._M_start); }</span>
 <span class="lineNum">     672 </span>                :            : 
 <a name="673"><span class="lineNum">     673 </span>                :            :       /**  Returns the size() of the largest possible %vector.  */</a>
 <span class="lineNum">     674 </span>                :            :       size_type
-<span class="lineNum">     675 </span>                :<span class="lineCov">       8012 :       max_size() const _GLIBCXX_NOEXCEPT</span>
-<span class="lineNum">     676 </span>                :<span class="lineCov">       8012 :       { return _Alloc_traits::max_size(_M_get_Tp_allocator()); }</span>
+<span class="lineNum">     675 </span>                :<span class="lineCov">       8008 :       max_size() const _GLIBCXX_NOEXCEPT</span>
+<span class="lineNum">     676 </span>                :<span class="lineCov">       8008 :       { return _Alloc_traits::max_size(_M_get_Tp_allocator()); }</span>
 <span class="lineNum">     677 </span>                :            : 
 <span class="lineNum">     678 </span>                :            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     679 </span>                :            :       /**
@@ -1023,8 +1023,8 @@
 <span class="lineNum">     950 </span>                :            : 
 <a name="951"><span class="lineNum">     951 </span>                :            : #if __cplusplus &gt;= 201103L</a>
 <span class="lineNum">     952 </span>                :            :       void
-<span class="lineNum">     953 </span>                :<span class="lineCov">       6556 :       push_back(value_type&amp;&amp; __x)</span>
-<span class="lineNum">     954 </span>                :<span class="lineCov">       6556 :       { emplace_back(std::move(__x)); }</span>
+<span class="lineNum">     953 </span>                :<span class="lineCov">       6554 :       push_back(value_type&amp;&amp; __x)</span>
+<span class="lineNum">     954 </span>                :<span class="lineCov">       6554 :       { emplace_back(std::move(__x)); }</span>
 <span class="lineNum">     955 </span>                :            : 
 <span class="lineNum">     956 </span>                :            :       template&lt;typename... _Args&gt;
 <span class="lineNum">     957 </span>                :            : #if __cplusplus &gt; 201402L
@@ -1572,16 +1572,16 @@
 <span class="lineNum">    1499 </span>                :            : 
 <a name="1500"><span class="lineNum">    1500 </span>                :            :       // Called by _M_fill_insert, _M_insert_aux etc.</a>
 <span class="lineNum">    1501 </span>                :            :       size_type
-<span class="lineNum">    1502 </span>                :<span class="lineCov">       4006 :       _M_check_len(size_type __n, const char* __s) const</span>
+<span class="lineNum">    1502 </span>                :<span class="lineCov">       4004 :       _M_check_len(size_type __n, const char* __s) const</span>
 <span class="lineNum">    1503 </span>                :            :       {
-<span class="lineNum">    1504 </span>[<span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 1408 times"> + </span>][<span class="branchNoCov" title="Branch 6 was not taken"> - </span><span class="branchCov" title="Branch 7 was taken 264 times"> + </span>]:<span class="lineCov">       4006 :         if (max_size() - size() &lt; __n)</span>
-<span class="lineNum">         </span>        [<span class="branchNoCov" title="Branch 10 was not taken"> - </span><span class="branchCov" title="Branch 11 was taken 331 times"> + </span>]
+<span class="lineNum">    1504 </span>[<span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 1408 times"> + </span>][<span class="branchNoCov" title="Branch 6 was not taken"> - </span><span class="branchCov" title="Branch 7 was taken 264 times"> + </span>]:<span class="lineCov">       4004 :         if (max_size() - size() &lt; __n)</span>
+<span class="lineNum">         </span>        [<span class="branchNoCov" title="Branch 10 was not taken"> - </span><span class="branchCov" title="Branch 11 was taken 330 times"> + </span>]
 <span class="lineNum">    1505 </span>                :<span class="lineNoCov">          0 :           __throw_length_error(__N(__s));</span>
 <span class="lineNum">    1506 </span>                :            : 
-<span class="lineNum">    1507 </span>                :<span class="lineCov">       4006 :         const size_type __len = size() + std::max(size(), __n);</span>
-<span class="lineNum">    1508 </span>[<span class="branchCov" title="Branch 1 was taken 1408 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 1408 times"> + </span>]:<span class="lineCov">       4006 :         return (__len &lt; size() || __len &gt; max_size()) ? max_size() : __len;</span>
+<span class="lineNum">    1507 </span>                :<span class="lineCov">       4004 :         const size_type __len = size() + std::max(size(), __n);</span>
+<span class="lineNum">    1508 </span>[<span class="branchCov" title="Branch 1 was taken 1408 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span>][<span class="branchNoCov" title="Branch 4 was not taken"> - </span><span class="branchCov" title="Branch 5 was taken 1408 times"> + </span>]:<span class="lineCov">       4004 :         return (__len &lt; size() || __len &gt; max_size()) ? max_size() : __len;</span>
 <span class="lineNum">         </span>[<span class="branchCov" title="Branch 8 was taken 264 times"> + </span><span class="branchNoCov" title="Branch 9 was not taken"> - </span>][<span class="branchNoCov" title="Branch 11 was not taken"> - </span><span class="branchCov" title="Branch 12 was taken 264 times"> + </span>]
-<span class="lineNum">         </span>[<span class="branchCov" title="Branch 15 was taken 331 times"> + </span><span class="branchNoCov" title="Branch 16 was not taken"> - </span>][<span class="branchNoCov" title="Branch 18 was not taken"> - </span><span class="branchCov" title="Branch 19 was taken 331 times"> + </span>]
+<span class="lineNum">         </span>[<span class="branchCov" title="Branch 15 was taken 330 times"> + </span><span class="branchNoCov" title="Branch 16 was not taken"> - </span>][<span class="branchNoCov" title="Branch 18 was not taken"> - </span><span class="branchCov" title="Branch 19 was taken 330 times"> + </span>]
 <span class="lineNum">    1509 </span>                :            :       }
 <span class="lineNum">    1510 </span>                :            : 
 <span class="lineNum">    1511 </span>                :            :       // Internal erase functions follow.
