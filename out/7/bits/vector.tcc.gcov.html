@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">40</td>
-            <td class="headerCovTableEntry">69</td>
-            <td class="headerCovTableEntryLo">58.0 %</td>
+            <td class="headerCovTableEntry">62</td>
+            <td class="headerCovTableEntryLo">64.5 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-11-24 14:50:42</td>
+            <td class="headerValue">2020-11-24 15:03:58</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">10</td>
@@ -49,9 +49,9 @@
             <td></td>
             <td></td>
             <td class="headerItem">Branches:</td>
-            <td class="headerCovTableEntry">30</td>
-            <td class="headerCovTableEntry">104</td>
-            <td class="headerCovTableEntryLo">28.8 %</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntry">48</td>
+            <td class="headerCovTableEntryLo">37.5 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -491,8 +491,7 @@
 <span class="lineNum">     412 </span>                :            :           // to the existing vector.  This is an issue only for callers
 <span class="lineNum">     413 </span>                :            :           // taking the element by lvalue ref (see last bullet of C++11
 <span class="lineNum">     414 </span>                :            :           // [res.on.arguments]).
-<span class="lineNum">     415 </span>  [<span class="branchCov" title="Branch 2 was taken 1408 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span><span class="branchCov" title="Branch 6 was taken 264 times"> + </span><span class="branchNoCov" title="Branch 7 was not taken"> - </span> :<span class="lineCov">       6009 :           _Alloc_traits::construct(this-&gt;_M_impl,</span>
-<span class="lineNum">         </span>   <span class="branchCov" title="Branch 10 was taken 109 times"> + </span><span class="branchNoCov" title="Branch 11 was not taken"> - </span><span class="branchCov" title="Branch 14 was taken 222 times"> + </span><span class="branchNoCov" title="Branch 15 was not taken"> - </span>]
+<span class="lineNum">     415 </span>                :<span class="lineCov">       6009 :           _Alloc_traits::construct(this-&gt;_M_impl,</span>
 <span class="lineNum">     416 </span>                :<span class="lineCov">       4006 :                                    __new_start + __elems_before,</span>
 <span class="lineNum">     417 </span>                :            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     418 </span>                :            :                                    std::forward&lt;_Args&gt;(__args)...);
@@ -501,33 +500,27 @@
 <span class="lineNum">     421 </span>                :            : #endif
 <span class="lineNum">     422 </span>                :<span class="lineCov">       4006 :           __new_finish = pointer();</span>
 <span class="lineNum">     423 </span>                :            : 
-<span class="lineNum">     424 </span>  [<span class="branchCov" title="Branch 1 was taken 1408 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 4 was taken 264 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span> :<span class="lineCov">       4006 :           __new_finish</span>
-<span class="lineNum">         </span>   <span class="branchCov" title="Branch 7 was taken 109 times"> + </span><span class="branchNoCov" title="Branch 8 was not taken"> - </span><span class="branchCov" title="Branch 10 was taken 222 times"> + </span><span class="branchNoCov" title="Branch 11 was not taken"> - </span>]
+<span class="lineNum">     424 </span>                :<span class="lineCov">       4006 :           __new_finish</span>
 <span class="lineNum">     425 </span>                :            :             = std::__uninitialized_move_if_noexcept_a
 <span class="lineNum">     426 </span>                :<span class="lineCov">       4006 :             (this-&gt;_M_impl._M_start, __position.base(),</span>
 <span class="lineNum">     427 </span>                :<span class="lineCov">       4006 :              __new_start, _M_get_Tp_allocator());</span>
 <span class="lineNum">     428 </span>                :            : 
 <span class="lineNum">     429 </span>                :<span class="lineCov">       4006 :           ++__new_finish;</span>
 <span class="lineNum">     430 </span>                :            : 
-<span class="lineNum">     431 </span>  [<span class="branchCov" title="Branch 1 was taken 1408 times"> + </span><span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 4 was taken 264 times"> + </span><span class="branchNoCov" title="Branch 5 was not taken"> - </span> :<span class="lineCov">       4006 :           __new_finish</span>
-<span class="lineNum">         </span>   <span class="branchCov" title="Branch 7 was taken 109 times"> + </span><span class="branchNoCov" title="Branch 8 was not taken"> - </span><span class="branchCov" title="Branch 10 was taken 222 times"> + </span><span class="branchNoCov" title="Branch 11 was not taken"> - </span>]
+<span class="lineNum">     431 </span>                :<span class="lineCov">       4006 :           __new_finish</span>
 <span class="lineNum">     432 </span>                :            :             = std::__uninitialized_move_if_noexcept_a
 <span class="lineNum">     433 </span>                :<span class="lineCov">       4006 :             (__position.base(), this-&gt;_M_impl._M_finish,</span>
 <span class="lineNum">     434 </span>                :<span class="lineCov">       4006 :              __new_finish, _M_get_Tp_allocator());</span>
 <span class="lineNum">     435 </span>                :            :         }
-<span class="lineNum">     436 </span>                :<span class="lineNoCov">          0 :       __catch(...)</span>
+<span class="lineNum">     436 </span>                :            :       __catch(...)
 <span class="lineNum">     437 </span>                :            :         {
-<span class="lineNum">     438 </span>  [<span class="branchNoExec" title="Branch 0 was not executed"> # </span><span class="branchNoExec" title="Branch 1 was not executed"> # </span><span class="branchNoExec" title="Branch 2 was not executed"> # </span><span class="branchNoExec" title="Branch 3 was not executed"> # </span> :<span class="lineNoCov">          0 :           if (!__new_finish)</span>
-<span class="lineNum">         </span>   <span class="branchNoExec" title="Branch 4 was not executed"> # </span><span class="branchNoExec" title="Branch 5 was not executed"> # </span><span class="branchNoExec" title="Branch 6 was not executed"> # </span><span class="branchNoExec" title="Branch 7 was not executed"> # </span>]
-<span class="lineNum">     439 </span>  [<span class="branchNoExec" title="Branch 1 was not executed"> # </span><span class="branchNoExec" title="Branch 2 was not executed"> # </span><span class="branchNoExec" title="Branch 4 was not executed"> # </span><span class="branchNoExec" title="Branch 5 was not executed"> # </span> :<span class="lineNoCov">          0 :             _Alloc_traits::destroy(this-&gt;_M_impl,</span>
-<span class="lineNum">         </span>   <span class="branchNoExec" title="Branch 7 was not executed"> # </span><span class="branchNoExec" title="Branch 8 was not executed"> # </span><span class="branchNoExec" title="Branch 10 was not executed"> # </span><span class="branchNoExec" title="Branch 11 was not executed"> # </span>]
-<span class="lineNum">     440 </span>                :<span class="lineNoCov">          0 :                                    __new_start + __elems_before);</span>
+<span class="lineNum">     438 </span>                :            :           if (!__new_finish)
+<span class="lineNum">     439 </span>                :            :             _Alloc_traits::destroy(this-&gt;_M_impl,
+<span class="lineNum">     440 </span>                :            :                                    __new_start + __elems_before);
 <span class="lineNum">     441 </span>                :            :           else
-<span class="lineNum">     442 </span>  [<span class="branchNoExec" title="Branch 2 was not executed"> # </span><span class="branchNoExec" title="Branch 3 was not executed"> # </span><span class="branchNoExec" title="Branch 6 was not executed"> # </span><span class="branchNoExec" title="Branch 7 was not executed"> # </span> :<span class="lineNoCov">          0 :             std::_Destroy(__new_start, __new_finish, _M_get_Tp_allocator());</span>
-<span class="lineNum">         </span>   <span class="branchNoExec" title="Branch 10 was not executed"> # </span><span class="branchNoExec" title="Branch 11 was not executed"> # </span><span class="branchNoExec" title="Branch 14 was not executed"> # </span><span class="branchNoExec" title="Branch 15 was not executed"> # </span>]
-<span class="lineNum">     443 </span>  [<span class="branchNoExec" title="Branch 1 was not executed"> # </span><span class="branchNoExec" title="Branch 2 was not executed"> # </span><span class="branchNoExec" title="Branch 4 was not executed"> # </span><span class="branchNoExec" title="Branch 5 was not executed"> # </span> :<span class="lineNoCov">          0 :           _M_deallocate(__new_start, __len);</span>
-<span class="lineNum">         </span>   <span class="branchNoExec" title="Branch 7 was not executed"> # </span><span class="branchNoExec" title="Branch 8 was not executed"> # </span><span class="branchNoExec" title="Branch 10 was not executed"> # </span><span class="branchNoExec" title="Branch 11 was not executed"> # </span>]
-<span class="lineNum">     444 </span>                :<span class="lineNoCov">          0 :           __throw_exception_again;</span>
+<span class="lineNum">     442 </span>                :            :             std::_Destroy(__new_start, __new_finish, _M_get_Tp_allocator());
+<span class="lineNum">     443 </span>                :            :           _M_deallocate(__new_start, __len);
+<span class="lineNum">     444 </span>                :            :           __throw_exception_again;
 <span class="lineNum">     445 </span>                :            :         }
 <span class="lineNum">     446 </span>                :<span class="lineCov">       4006 :       std::_Destroy(this-&gt;_M_impl._M_start, this-&gt;_M_impl._M_finish,</span>
 <span class="lineNum">     447 </span>                :<span class="lineCov">       4006 :                     _M_get_Tp_allocator());</span>

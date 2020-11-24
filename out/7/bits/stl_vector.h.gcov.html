@@ -32,12 +32,12 @@
             <td></td>
             <td class="headerItem">Lines:</td>
             <td class="headerCovTableEntry">67</td>
-            <td class="headerCovTableEntry">99</td>
-            <td class="headerCovTableEntryLo">67.7 %</td>
+            <td class="headerCovTableEntry">96</td>
+            <td class="headerCovTableEntryLo">69.8 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2020-11-24 14:50:42</td>
+            <td class="headerValue">2020-11-24 15:03:58</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntry">65</td>
@@ -50,8 +50,8 @@
             <td></td>
             <td class="headerItem">Branches:</td>
             <td class="headerCovTableEntry">20</td>
-            <td class="headerCovTableEntry">50</td>
-            <td class="headerCovTableEntryLo">40.0 %</td>
+            <td class="headerCovTableEntry">32</td>
+            <td class="headerCovTableEntryLo">62.5 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -206,7 +206,7 @@
 <span class="lineNum">     135 </span>                :            : 
 <span class="lineNum">     136 </span>                :<span class="lineNoCov">          0 :       _Vector_base(size_t __n, const allocator_type&amp; __a)</span>
 <span class="lineNum">     137 </span>                :<span class="lineNoCov">          0 :       : _M_impl(__a)</span>
-<span class="lineNum">     138 </span>        [<span class="branchNoExec" title="Branch 1 was not executed"> # </span><span class="branchNoExec" title="Branch 2 was not executed"> # </span>]:<span class="lineNoCov">          0 :       { _M_create_storage(__n); }</span>
+<span class="lineNum">     138 </span>                :<span class="lineNoCov">          0 :       { _M_create_storage(__n); }</span>
 <span class="lineNum">     139 </span>                :            : 
 <span class="lineNum">     140 </span>                :            : #if __cplusplus &gt;= 201103L
 <span class="lineNum">     141 </span>                :            :       _Vector_base(_Tp_alloc_type&amp;&amp; __a) noexcept
@@ -398,10 +398,10 @@
 <span class="lineNum">     325 </span>                :            :        */
 <span class="lineNum">     326 </span>                :<span class="lineNoCov">          0 :       vector(const vector&amp; __x)</span>
 <span class="lineNum">     327 </span>                :            :       : _Base(__x.size(),
-<span class="lineNum">     328 </span>        [<span class="branchNoExec" title="Branch 4 was not executed"> # </span><span class="branchNoExec" title="Branch 5 was not executed"> # </span>]:<span class="lineNoCov">          0 :         _Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))</span>
+<span class="lineNum">     328 </span>                :<span class="lineNoCov">          0 :         _Alloc_traits::_S_select_on_copy(__x._M_get_Tp_allocator()))</span>
 <span class="lineNum">     329 </span>                :            :       {
 <span class="lineNum">     330 </span>                :<span class="lineNoCov">          0 :         this-&gt;_M_impl._M_finish =</span>
-<span class="lineNum">     331 </span>        [<span class="branchNoExec" title="Branch 3 was not executed"> # </span><span class="branchNoExec" title="Branch 4 was not executed"> # </span>]:<span class="lineNoCov">          0 :           std::__uninitialized_copy_a(__x.begin(), __x.end(),</span>
+<span class="lineNum">     331 </span>                :<span class="lineNoCov">          0 :           std::__uninitialized_copy_a(__x.begin(), __x.end(),</span>
 <span class="lineNum">     332 </span>                :            :                                       this-&gt;_M_impl._M_start,
 <span class="lineNum">     333 </span>                :<span class="lineNoCov">          0 :                                       _M_get_Tp_allocator());</span>
 <span class="lineNum">     334 </span>                :<span class="lineNoCov">          0 :       }</span>
@@ -1333,16 +1333,14 @@
 <span class="lineNum">    1260 </span>                :<span class="lineNoCov">          0 :           pointer __result = this-&gt;_M_allocate(__n);</span>
 <span class="lineNum">    1261 </span>                :            :           __try
 <span class="lineNum">    1262 </span>                :            :             {
-<span class="lineNum">    1263 </span>  [<span class="branchNoExec" title="Branch 1 was not executed"> # </span><span class="branchNoExec" title="Branch 2 was not executed"> # </span><span class="branchNoExec" title="Branch 4 was not executed"> # </span><span class="branchNoExec" title="Branch 5 was not executed"> # </span> :<span class="lineNoCov">          0 :               std::__uninitialized_copy_a(__first, __last, __result,</span>
-<span class="lineNum">         </span>         <span class="branchNoExec" title="Branch 7 was not executed"> # </span><span class="branchNoExec" title="Branch 8 was not executed"> # </span>]
+<span class="lineNum">    1263 </span>                :<span class="lineNoCov">          0 :               std::__uninitialized_copy_a(__first, __last, __result,</span>
 <span class="lineNum">    1264 </span>                :<span class="lineNoCov">          0 :                                           _M_get_Tp_allocator());</span>
 <span class="lineNum">    1265 </span>                :<span class="lineNoCov">          0 :               return __result;</span>
 <span class="lineNum">    1266 </span>                :            :             }
-<span class="lineNum">    1267 </span>                :<span class="lineNoCov">          0 :           __catch(...)</span>
+<span class="lineNum">    1267 </span>                :            :           __catch(...)
 <span class="lineNum">    1268 </span>                :            :             {
-<span class="lineNum">    1269 </span>  [<span class="branchNoExec" title="Branch 1 was not executed"> # </span><span class="branchNoExec" title="Branch 2 was not executed"> # </span><span class="branchNoExec" title="Branch 4 was not executed"> # </span><span class="branchNoExec" title="Branch 5 was not executed"> # </span> :<span class="lineNoCov">          0 :               _M_deallocate(__result, __n);</span>
-<span class="lineNum">         </span>         <span class="branchNoExec" title="Branch 7 was not executed"> # </span><span class="branchNoExec" title="Branch 8 was not executed"> # </span>]
-<span class="lineNum">    1270 </span>                :<span class="lineNoCov">          0 :               __throw_exception_again;</span>
+<span class="lineNum">    1269 </span>                :            :               _M_deallocate(__result, __n);
+<span class="lineNum">    1270 </span>                :            :               __throw_exception_again;
 <span class="lineNum">    1271 </span>                :            :             }
 <span class="lineNum">    1272 </span>                :            :         }
 <span class="lineNum">    1273 </span>                :            : 
