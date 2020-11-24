@@ -287,9 +287,6 @@ int main(int argc, char *argv[]) {
 	else if(players[0].tanks && players[1].tanks == 0){
 		cout << players[0].name << ", you have won!" << endl;
 	}
-	else if(players[0].tanks == 0 && players[1].tanks == 0){
-		cout << "It's a tie!" << endl;
-	}
 	
 
     return 0;
