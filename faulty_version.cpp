@@ -168,7 +168,7 @@ int main(int argc, char *argv[]) {
                         "A regular missile can target one coordinate. A special missle can target one coordinate and one that is adjacent to it."
                         "Whoever destories the first tank can get an additional special missle."
                         "The player who first destroies all 8 tanks of the opponent wins." << endl;
-                turn_count--; // fault 2, after help command goes directly to the next round
+                // turn_count--; // fault 2, after help command goes directly to the next round
                 continue;
             }
             else{
